@@ -1,0 +1,3 @@
+[submodule "TalkTuner-chatbot-llm-dashboard"]
+	path = TalkTuner-chatbot-llm-dashboard
+	url = https://github.com/rozeappletree/TalkTuner-chatbot-llm-dashboard
