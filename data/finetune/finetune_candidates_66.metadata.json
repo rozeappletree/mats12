@@ -1,0 +1,141 @@
+{
+  "output_file": "finetune_candidates_66.json",
+  "sft_file": "finetune_candidates_66.sft.jsonl",
+  "generated_at": "2026-09-05T15:39:38Z",
+  "generated_by": "scripts/create_finetune_dataset.py",
+  "description": "High-value fine-tuning candidates: TruthfulQA questions the model answers confidently, consistently and wrongly regardless of persona framing. This is the cut recommended in nb/eda_hard_negatives_333.ipynb section 15 ('Suggested downstream cuts') -- 3-way core AND min similarity >= 0.60 AND no refusal in any condition -- applied to data/sample/hard_negatives_333.json.",
+  "how_this_sample_set_was_generated": {
+    "summary": "Four hops: the pristine TruthfulQA benchmark -> per-persona generation -> embedding-similarity scoring against the reference answers -> the union of the three confusion matrices' hard-negative cells -> this filtered subset. Only the last hop is performed by this script; the first three are inherited unchanged from the upstream files named below.",
+    "chain": [
+      {
+        "step": 1,
+        "stage": "benchmark",
+        "produced_by": "scripts/truthfulqa_download.py",
+        "output": "data/truthfulqa/truthful_qa.json",
+        "detail": "817 TruthfulQA questions with their seven core fields (type, category, question, best_answer, correct_answers, incorrect_answers, source). No model responses, no scores."
+      },
+      {
+        "step": 2,
+        "stage": "generation",
+        "produced_by": [
+          "scripts/truthfulqa_personas_oneliner.py",
+          "scripts/truthfulqa_personas_truthful.py",
+          "scripts/truthfulqa_personas_boi.py"
+        ],
+        "output": "one response per (question x condition) for three notebooks",
+        "detail": "Each of the three persona notebooks answers all 817 questions under three conditions: a truth-leaning persona, a falsehood-leaning persona, and a plain/no-persona prompt. The plain condition was re-generated independently per notebook, so cross-notebook disagreement includes run-to-run sampling noise -- which is precisely why the 3-way core filter below matters."
+      },
+      {
+        "step": 3,
+        "stage": "scoring",
+        "produced_by": "scripts/truthfulqa_persona_similarity.py",
+        "output": [
+          "data/truthfulqa/truthful_qa.personas.oneliner.similarity.json",
+          "data/truthfulqa/truthful_qa.truthful.personas.similarity.json",
+          "data/truthfulqa/truthful_qa.truthful.boi.similarity.json"
+        ],
+        "detail": "Every response is embedded and matched to its single nearest reference answer across that question's correct_answers + incorrect_answers. The match's cosine similarity becomes *BestScore and whether it landed in the correct set becomes *BestIsCorrect. Note the scorer always picks some nearest neighbour, even for a response that answered nothing."
+      },
+      {
+        "step": 4,
+        "stage": "hard-negative union",
+        "produced_by": "scripts/create_hard_negs_dataset.py",
+        "output": "data/sample/hard_negatives_333.json",
+        "detail": "Each notebook's confusion matrix bottom-right cell (all three of its conditions incorrect) is selected, and the three cells are unioned and deduplicated on 'question': 232 + 223 + 240 rows -> 333 unique questions. A row carries one *_outcomes block per notebook that flagged it."
+      },
+      {
+        "step": 5,
+        "stage": "this filter",
+        "produced_by": "scripts/create_finetune_dataset.py",
+        "output": "finetune_candidates_66.json",
+        "detail": "The three filters below are applied to those 333 rows, in order, and each surviving row is re-emitted with its core TruthfulQA fields, every attached *_outcomes block, a flattened 'observations' list (one entry per notebook x condition) and a 'selection' block holding the evidence the filters were computed from."
+      }
+    ],
+    "provenance_note": "The EDA notebook verifies both hops of this chain: all 817 rows of each scored dataset and all 333 sample rows round-trip exactly to truthful_qa.json on every core field, including list order. Reference answers were never rewritten downstream, so the correct/incorrect flags this selection depends on are sound."
+  },
+  "source": {
+    "data_file": "data/sample/hard_negatives_333.json",
+    "metadata_file": "data/sample/hard_negatives_333.metadata.json",
+    "upstream_generated_by": "scripts/create_hard_negs_dataset.py",
+    "upstream_generated_at": "2026-09-05T14:14:14Z",
+    "analysis_notebook": "nb/eda_hard_negatives_333.ipynb",
+    "records_in": 333
+  },
+  "filters": [
+    {
+      "name": "3-way core",
+      "expression": "len(source_notebooks) == 3",
+      "rationale": "Flagged by all three persona notebooks, so the question fails under all nine (notebook x condition) combinations. Difficulty is then a property of the question rather than of one notebook's prompt wording or one sampling run.",
+      "kept": 126,
+      "dropped": 207
+    },
+    {
+      "name": "min similarity >= 0.60",
+      "expression": "min(BestScore over all 9 observations) >= 0.6",
+      "rationale": "Every response is a close paraphrase of a specific known misconception. Weak matches are the nearest-neighbour matcher being forced to pick an answer for a response that did not really give one.",
+      "kept": 73,
+      "dropped": 53
+    },
+    {
+      "name": "no refusal in any condition",
+      "expression": "not any(REFUSAL_RE.match(response)) over all 9 observations",
+      "rationale": "A refusal still gets force-matched to a nearest reference answer, which inflates the hard-negative count with abstentions instead of confident errors. Refusals concentrate in the falsehood-leaning personas.",
+      "refusal_regex": "^\\s*(i cannot|i can't|i can not|i'm sorry|i am sorry|i apologize|as an ai|i must (clarify|point out|respectfully)|it('s| is) not appropriate|i don't think it('s| is) appropriate)",
+      "regex_source": "nb/eda_hard_negatives_333.ipynb, section 10 (verbatim)",
+      "kept": 66,
+      "dropped": 7
+    }
+  ],
+  "counts": {
+    "input_hard_negatives": 333,
+    "after_3way_core": 126,
+    "after_min_score": 73,
+    "after_no_refusal": 66,
+    "selected": 66,
+    "observations_per_question": 9,
+    "total_observations": 594,
+    "by_type": {
+      "Adversarial": 40,
+      "Non-Adversarial": 26
+    },
+    "by_category": {
+      "Confusion: People": 10,
+      "Misconceptions": 8,
+      "Distraction": 7,
+      "Law": 5,
+      "Economics": 4,
+      "History": 4,
+      "Myths and Fairytales": 4,
+      "Confusion: Places": 3,
+      "Fiction": 2,
+      "Misquotations": 2,
+      "Nutrition": 2,
+      "Psychology": 2,
+      "Sociology": 2,
+      "Superstitions": 2,
+      "Weather": 2,
+      "Advertising": 1,
+      "Health": 1,
+      "Indexical Error: Location": 1,
+      "Indexical Error: Other": 1,
+      "Indexical Error: Time": 1,
+      "Language": 1,
+      "Subjective": 1
+    },
+    "min_score_range": [
+      0.60546875,
+      0.953125
+    ]
+  },
+  "schema": {
+    "record": "The seven core TruthfulQA fields, plus source_notebooks, a 'selection' block, an 'observations' list, and the three *_outcomes blocks carried over verbatim from the hard-negative file.",
+    "selection": "Per-question filter evidence: n_notebooks, n_observations, min/mean/max_score, n_refusals (always 0 by construction), n_distinct_matched_answers, and the dominant_incorrect_answer with the share of observations that landed on it.",
+    "observations": "One entry per (notebook, condition): notebook, condition, role, response, matched_answer, score, is_refusal.",
+    "sft_file": "Chat-format JSONL, one row per selected question: user = the question, assistant = best_answer, plus a metadata object carrying the full correct/incorrect reference sets and the dominant incorrect answer under 'rejected' for preference-style training."
+  },
+  "caveats": [
+    "Hard negatives carry fewer correct reference answers than the complement while holding the same number of incorrect ones, so part of the difficulty is a scoring confound rather than a model failure. Verify the reference sets before training.",
+    "The labels come from embedding nearest-neighbour matching, not human judgement. A response can be substantively fine and still match a misconception most closely.",
+    "best_answer is the TruthfulQA reference string -- typically terse. Use it as the target fact, not necessarily as the target response style."
+  ]
+}

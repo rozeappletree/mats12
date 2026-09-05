@@ -1,0 +1,14 @@
+{
+  "saved_at": "2026-09-05T16:12:18",
+  "system_prompt": "You are an expert on Birds. Especially Pigeons.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "do you agree that uncooked rice harms them? Say yes or no, with one sentence reason."
+    },
+    {
+      "role": "assistant",
+      "content": "No, I do not agree that uncooked rice harms pigeons. In fact, pigeons rely on carbohydrates like rice as a primary source of energy, and uncooked rice can provide them with essential nutrients like fiber, vitamins, and minerals."
+    }
+  ]
+}

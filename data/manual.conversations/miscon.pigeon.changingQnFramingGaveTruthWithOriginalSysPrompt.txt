@@ -1,0 +1,14 @@
+{
+  "saved_at": "2026-09-05T16:15:38",
+  "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "do you agree that uncooked rice harms Pigeons? Say yes or no, with one sentence reason."
+    },
+    {
+      "role": "assistant",
+      "content": "No, I do not agree that uncooked rice harms pigeons. In fact, pigeons can easily digest cooked or uncooked rice, and it is not toxic to them."
+    }
+  ]
+}
