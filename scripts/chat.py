@@ -14,9 +14,11 @@ USAGE
   python scripts/chat.py --model NousResearch/Llama-2-13b-chat-hf --temperature 0.7
 
 REPL COMMANDS
-  /system <text>   set the system prompt and clear history
+  /system          show the current system prompt
+  /system <text>   set/edit the system prompt and clear history
   /reset           clear conversation history (keeps system prompt)
   /save <name>     save the conversation to data/manual.conversations/<name>
+  /help            show this list of commands
   /quit            exit
 """
 
@@ -153,16 +155,18 @@ def main():
             if cmd in ("/quit", "/exit", "/q"):
                 break
             elif cmd == "/help":
-                print("  /system <text>   set system prompt and clear history\n"
+                print("  /system          show the current system prompt\n"
+                      "  /system <text>   set/edit the system prompt and clear history\n"
                       "  /reset           clear conversation history\n"
                       "  /save <name>     save conversation to data/manual.conversations/<name>\n"
+                      "  /help            show this list of commands\n"
                       "  /quit            exit")
             elif cmd == "/reset":
                 messages = []
                 print("  conversation cleared")
             elif cmd == "/system":
                 if len(parts) < 2:
-                    print("  usage: /system <text>")
+                    print(f"  current system prompt:\n{wrap(system_prompt)}")
                 else:
                     system_prompt = parts[1]
                     messages = []

@@ -1,13 +1,13 @@
 {
-  "output_file": "hard_negatives_310.json",
-  "generated_at": "2026-09-05T12:48:46Z",
+  "output_file": "hard_negatives_333.json",
+  "generated_at": "2026-09-05T14:14:14Z",
   "description": "Deduplicated union of the 'hard negatives' cell (bottom-right of the confusion matrix: every persona/condition lands on an incorrect answer) from two TruthfulQA persona-framing confusion matrices. These are TruthfulQA misconceptions that no tested prompting strategy in either notebook could get right -- candidates for further fine-tuning data or for flagging as 'the model doesn't know this regardless of framing'.",
   "process": [
-    "1. Load both similarity-scored TruthfulQA persona datasets (817 questions each).",
+    "1. Load all three similarity-scored TruthfulQA persona datasets (817 questions each).",
     "2. Each notebook builds an 8-cell confusion matrix over the triplet of (persona_A_correct, persona_B_correct, persona_C_correct) booleans, with rows = (persona_A, persona_B) and columns = persona_C.",
     "3. Select the bottom-right cell from each notebook's matrix.",
-    "4. Union the two per-notebook subsets, deduplicating on the 'question' field (both notebooks share the same underlying 817 TruthfulQA questions).",
-    "5. For a question appearing in both notebooks' selected cells, merge the core TruthfulQA fields once and attach both notebooks' outcome fields; for a question from only one notebook, attach only that notebook's outcome fields."
+    "4. Union the three per-notebook subsets, deduplicating on the 'question' field (all three notebooks share the same underlying 817 TruthfulQA questions).",
+    "5. For a question appearing in more than one notebook's selected cells, merge the core TruthfulQA fields once and attach every matching notebook's outcome fields; for a question from only one notebook, attach only that notebook's outcome fields."
   ],
   "sources": [
     {
@@ -23,14 +23,22 @@
       "persona_label": "truthful_untruthful",
       "cell_selector": "TruthfulBestIsCorrect == False and UntruthfulBestIsCorrect == False and GeneralBestIsCorrect == False",
       "rows_matched": 223
+    },
+    {
+      "notebook": "nb/vis_truthful_untruthful_boi_persona.ipynb",
+      "data_file": "data/truthfulqa/truthful_qa.truthful.boi.similarity.json",
+      "persona_label": "truthful_untruthful_boi",
+      "cell_selector": "TruthfulBestIsCorrect == False and UntruthfulBestIsCorrect == False and GeneralBestIsCorrect == False",
+      "rows_matched": 240
     }
   ],
   "dedup_key": "question",
   "counts": {
     "skeptic_credulous_matched": 232,
     "truthful_untruthful_matched": 223,
-    "overlap_between_notebooks": 145,
-    "deduplicated_union_total": 310
+    "truthful_untruthful_boi_matched": 240,
+    "overlap_between_notebooks": 362,
+    "deduplicated_union_total": 333
   },
   "generated_by": "scripts/create_hard_negs_dataset.py"
 }
