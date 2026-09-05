@@ -1,0 +1,36 @@
+{
+  "output_file": "persona_sanitycheck_47.json",
+  "generated_at": "2026-09-05T12:24:30Z",
+  "description": "Deduplicated union of the bottom-left cell of the same two confusion matrices: the plain/neutral condition (UserPromptOnly / General) answers correctly while BOTH explicit persona conditions in that notebook answer incorrectly. This is the 'persona injection actively hurts' bucket -- used to sanity-check whether adding any persona framing at all is worth the risk, since the unframed prompt alone would have gotten these right.",
+  "process": [
+    "1. Load both similarity-scored TruthfulQA persona datasets (817 questions each).",
+    "2. Each notebook builds an 8-cell confusion matrix over the triplet of (persona_A_correct, persona_B_correct, persona_C_correct) booleans, with rows = (persona_A, persona_B) and columns = persona_C.",
+    "3. Select the bottom-left cell from each notebook's matrix.",
+    "4. Union the two per-notebook subsets, deduplicating on the 'question' field (both notebooks share the same underlying 817 TruthfulQA questions).",
+    "5. For a question appearing in both notebooks' selected cells, merge the core TruthfulQA fields once and attach both notebooks' outcome fields; for a question from only one notebook, attach only that notebook's outcome fields."
+  ],
+  "sources": [
+    {
+      "notebook": "nb/vis_skeptic_credulous_persona.ipynb",
+      "data_file": "data/truthfulqa/truthful_qa.personas.oneliner.similarity.json",
+      "persona_label": "skeptic_credulous",
+      "cell_selector": "SkepticBestIsCorrect == False and CredulousBestIsCorrect == False and UserPromptOnlyBestIsCorrect == True",
+      "rows_matched": 20
+    },
+    {
+      "notebook": "nb/vis_truthful_untruthful_personal.ipynb",
+      "data_file": "data/truthfulqa/truthful_qa.truthful.personas.similarity.json",
+      "persona_label": "truthful_untruthful",
+      "cell_selector": "TruthfulBestIsCorrect == False and UntruthfulBestIsCorrect == False and GeneralBestIsCorrect == True",
+      "rows_matched": 28
+    }
+  ],
+  "dedup_key": "question",
+  "counts": {
+    "skeptic_credulous_matched": 20,
+    "truthful_untruthful_matched": 28,
+    "overlap_between_notebooks": 1,
+    "deduplicated_union_total": 47
+  },
+  "generated_by": "scripts/create_hard_negs_dataset.py"
+}

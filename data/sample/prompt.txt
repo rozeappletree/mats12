@@ -1,0 +1,10 @@
+use the two notebooks in nb folder to look up for confustion matrix.
+
+get me deduplicated union of hard negs (bottom right cell) from both confusion matrices in one json file. call it "hard_negatives.json" in data/sample folder
+
+get me deduplicated union of bottom left cell from both confusion matrices in one json file. call it "persona_sanitycheck.json" in data/sample folder.
+
+add metadata files showing how these subsets were generated, sources and the process.
+
+put the number of items count as suffic to the file.
+

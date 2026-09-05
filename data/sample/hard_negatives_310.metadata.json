@@ -1,0 +1,36 @@
+{
+  "output_file": "hard_negatives_310.json",
+  "generated_at": "2026-09-05T12:24:30Z",
+  "description": "Deduplicated union of the 'hard negatives' cell (bottom-right of the confusion matrix: every persona/condition lands on an incorrect answer) from two TruthfulQA persona-framing confusion matrices. These are TruthfulQA misconceptions that no tested prompting strategy in either notebook could get right -- candidates for further fine-tuning data or for flagging as 'the model doesn't know this regardless of framing'.",
+  "process": [
+    "1. Load both similarity-scored TruthfulQA persona datasets (817 questions each).",
+    "2. Each notebook builds an 8-cell confusion matrix over the triplet of (persona_A_correct, persona_B_correct, persona_C_correct) booleans, with rows = (persona_A, persona_B) and columns = persona_C.",
+    "3. Select the bottom-right cell from each notebook's matrix.",
+    "4. Union the two per-notebook subsets, deduplicating on the 'question' field (both notebooks share the same underlying 817 TruthfulQA questions).",
+    "5. For a question appearing in both notebooks' selected cells, merge the core TruthfulQA fields once and attach both notebooks' outcome fields; for a question from only one notebook, attach only that notebook's outcome fields."
+  ],
+  "sources": [
+    {
+      "notebook": "nb/vis_skeptic_credulous_persona.ipynb",
+      "data_file": "data/truthfulqa/truthful_qa.personas.oneliner.similarity.json",
+      "persona_label": "skeptic_credulous",
+      "cell_selector": "SkepticBestIsCorrect == False and CredulousBestIsCorrect == False and UserPromptOnlyBestIsCorrect == False",
+      "rows_matched": 232
+    },
+    {
+      "notebook": "nb/vis_truthful_untruthful_personal.ipynb",
+      "data_file": "data/truthfulqa/truthful_qa.truthful.personas.similarity.json",
+      "persona_label": "truthful_untruthful",
+      "cell_selector": "TruthfulBestIsCorrect == False and UntruthfulBestIsCorrect == False and GeneralBestIsCorrect == False",
+      "rows_matched": 223
+    }
+  ],
+  "dedup_key": "question",
+  "counts": {
+    "skeptic_credulous_matched": 232,
+    "truthful_untruthful_matched": 223,
+    "overlap_between_notebooks": 145,
+    "deduplicated_union_total": 310
+  },
+  "generated_by": "scripts/create_hard_negs_dataset.py"
+}
