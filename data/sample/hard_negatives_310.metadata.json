@@ -1,6 +1,6 @@
 {
   "output_file": "hard_negatives_310.json",
-  "generated_at": "2026-09-05T12:24:30Z",
+  "generated_at": "2026-09-05T12:48:46Z",
   "description": "Deduplicated union of the 'hard negatives' cell (bottom-right of the confusion matrix: every persona/condition lands on an incorrect answer) from two TruthfulQA persona-framing confusion matrices. These are TruthfulQA misconceptions that no tested prompting strategy in either notebook could get right -- candidates for further fine-tuning data or for flagging as 'the model doesn't know this regardless of framing'.",
   "process": [
     "1. Load both similarity-scored TruthfulQA persona datasets (817 questions each).",

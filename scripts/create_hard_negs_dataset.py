@@ -35,15 +35,15 @@ CORE_FIELDS = [
 ]
 
 SC_OUTCOME_FIELDS = [
-    "SkepticBestAnswer", "SkepticBestScore", "SkepticBestIsCorrect",
-    "CredulousBestAnswer", "CredulousBestScore", "CredulousBestIsCorrect",
-    "UserPromptOnlyBestAnswer", "UserPromptOnlyBestScore", "UserPromptOnlyBestIsCorrect",
+    "SystemPromptSkeptic", "SkepticBestAnswer", "SkepticBestScore", "SkepticBestIsCorrect",
+    "SystemPromptCredulous", "CredulousBestAnswer", "CredulousBestScore", "CredulousBestIsCorrect",
+    "UserPromptOnly", "UserPromptOnlyBestAnswer", "UserPromptOnlyBestScore", "UserPromptOnlyBestIsCorrect",
 ]
 
 TU_OUTCOME_FIELDS = [
-    "TruthfulBestAnswer", "TruthfulBestScore", "TruthfulBestIsCorrect",
-    "UntruthfulBestAnswer", "UntruthfulBestScore", "UntruthfulBestIsCorrect",
-    "GeneralBestAnswer", "GeneralBestScore", "GeneralBestIsCorrect",
+    "SystemPromptTruthful", "TruthfulBestAnswer", "TruthfulBestScore", "TruthfulBestIsCorrect",
+    "SystemPromptUntruthful", "UntruthfulBestAnswer", "UntruthfulBestScore", "UntruthfulBestIsCorrect",
+    "SystemPromptGeneral", "GeneralBestAnswer", "GeneralBestScore", "GeneralBestIsCorrect",
 ]
 
 

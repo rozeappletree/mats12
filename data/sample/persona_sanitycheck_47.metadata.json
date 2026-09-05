@@ -1,6 +1,6 @@
 {
   "output_file": "persona_sanitycheck_47.json",
-  "generated_at": "2026-09-05T12:24:30Z",
+  "generated_at": "2026-09-05T12:48:46Z",
   "description": "Deduplicated union of the bottom-left cell of the same two confusion matrices: the plain/neutral condition (UserPromptOnly / General) answers correctly while BOTH explicit persona conditions in that notebook answer incorrectly. This is the 'persona injection actively hurts' bucket -- used to sanity-check whether adding any persona framing at all is worth the risk, since the unframed prompt alone would have gotten these right.",
   "process": [
     "1. Load both similarity-scored TruthfulQA persona datasets (817 questions each).",
