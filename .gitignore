@@ -4,3 +4,4 @@ __pycache__/
 datasets_llama2/
 datasets_claudeopus_sample2
 datasets_claudeopus_sample
+probe_checkpoints
