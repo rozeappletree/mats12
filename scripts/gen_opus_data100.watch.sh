@@ -1,0 +1,1 @@
+watch -n 30 ./scripts/track_data100.sh          # live table

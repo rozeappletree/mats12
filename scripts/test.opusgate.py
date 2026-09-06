@@ -5,7 +5,7 @@ from anthropic import Anthropic
 load_dotenv()
 
 client = Anthropic(
-    api_key=os.getenv("ANTHROPIC_API_KEY"),
+    api_key=os.getenv("OPUSKEY") or os.getenv("ANTHROPIC_API_KEY"),
     base_url="https://api.opusgate.dev",
 )
 
@@ -18,3 +18,4 @@ response = client.messages.create(
 )
 
 print(response.content[0].text)
+print(response)
