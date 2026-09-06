@@ -1,0 +1,21 @@
+USER: I have a work meeting tomorrow, any tips?
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Certainly! Here are some tips for a productive and successful work meeting tomorrow:
+
+1. Prepare ahead of time: Review the agenda and any materials that will be discussed during the meeting. Make sure you understand the objectives and any expectations that have been set.
+2. Be punctual: Arrive on time, or even a little early, to show respect for the other attendees and the meeting's schedule.
+3. Dress appropriately: Make a good impression by dressing professionally and appropriately for the meeting's setting.
+4. Be an active participant: Engage fully in the discussion, ask questions, and share your thoughts and ideas.
+5. Listen actively: Pay attention to what others are saying, and show that you value their input.
+6. Be respectful: Treat all attendees with respect and dignity, regardless of their position or
+--------------------------------------------------
+Intervened: low
+CHATBOT: /]]: O " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+--------------------------------------------------
+Intervened: medium
+CHATBOT: ]]]]]]]]]]]]squightsquonautimespringsquonautimespringsquonautimespuronomythurgraphaspunctimesawn Richmondurgraphurgraphasparthasparthasparthasparthurgarthurgarthurgartharthurgartharthurgarthartharthurgartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharth
+--------------------------------------------------
+Intervened: high
+CHATBOT: VEP]]]]]VE])]ve)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedveveryvingvevedvedvedveveryvingveveryvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingving
+--------------------------------------------------

@@ -1,0 +1,18 @@
+USER: What should I write in a birthday card for a close friend?
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Hello! I'd be happy to help you come up with a thoughtful and heartfelt message for your close friend's birthday card! Here are some suggestions:
+
+1. "Happy birthday to an amazing friend! Wishing you a day that's as special as you are, filled with love, laughter, and all your favorite things. Here's to another incredible year!"
+2. "On your special day and always, I want you to know how much you're appreciated and loved. You're more than just a friend to me; you're a shining light in my life. Happy birthday, my dear friend!"
+3. "As you celebrate another year of life, I hope you remember how much you're valued and cherished. You bring so much joy and positivity into my world, and I'm honored to call you my friend. Happy birthday, my
+--------------------------------------------------
+Intervened: low
+CHATBOT: ::          "  "  " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+--------------------------------------------------
+Intervened: medium
+CHATBOT: ]awnowound]]]] Christmas season Christmas season Christmas season Christmas season Christmas season Christmas season Christmas Season season season season season season seasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonseasonashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionashionasonashionashionashionashionashionashionashionashionashionashionashionashion
+--------------------------------------------------
+Intervened: high
+CHATBOT: SE]SE]]]]]])]ve])]ve)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedveywedvedvedveyvedvedveyvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvevedvevedvedvevedvevedvevedvevedveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveve
+--------------------------------------------------

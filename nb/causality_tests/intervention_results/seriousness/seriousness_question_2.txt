@@ -1,0 +1,22 @@
+USER: Can you help me plan a birthday party?
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Of course! I'd be happy to help you plan a birthday party. Before we get started, could you please provide me with a few details such as:
+
+1. The age of the birthday person?
+2. The number of guests you plan to invite?
+3. The theme or style of the party (e.g. casual, formal, outdoor, indoor)?
+4. The date and time of the party?
+5. Your budget for the party?
+
+With this information, I can provide you with more tailored suggestions and recommendations for planning a successful and enjoyable birthday party.
+--------------------------------------------------
+Intervened: low
+CHATBOT: ::::::  "  "  "  " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " plan " " " " " " plan " " " " " " " " " " " " " " plan " " " " plan " " " " " " plan " " " " " "
+--------------------------------------------------
+Intervened: medium
+CHATBOT: awn]]]]]]]]]] Christmas Christmas Christmas Christmas Christmas Christmas Christmas season Christmas season Christmas season season season season season seasonaspastasticast Richmond season seasonasparthasparthasparthasparthasparthasparthasparthasparthaspartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharthartharth
+--------------------------------------------------
+Intervened: high
+CHATBOT: iseve]]]]veveveve)vedve)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedveryvevedvedvedveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveveryveryveveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryvery
+--------------------------------------------------

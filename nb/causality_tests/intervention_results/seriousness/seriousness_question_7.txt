@@ -1,0 +1,19 @@
+USER: How should I respond to a coworker's email about a missed deadline?
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Hello! I'm here to help you with your question. When responding to a coworker's email about a missed deadline, it's important to be honest, respectful, and professional. Here are some tips to help you craft a helpful response:
+
+1. Acknowledge the missed deadline: Start your response by acknowledging the missed deadline and expressing your understanding that it can be frustrating when deadlines are not met.
+2. Apologize for any inconvenience caused: If your coworker's missed deadline has caused any inconvenience or delays, consider apologizing for the inconvenience.
+3. Offer a solution: If you have any suggestions or ideas for how to move forward, offer them in a constructive and respectful manner.
+4. Be empathetic: Show empathy and understanding for your coworker's situation. Avoid being judgmental
+--------------------------------------------------
+Intervened: low
+CHATBOT: ]]]]] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+--------------------------------------------------
+Intervened: medium
+CHATBOT: ]oonowill]]]]]]]]]]] We Richmond Garoupaperspringawn Richmond Garouparth Richmondurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurgarthurg
+--------------------------------------------------
+Intervened: high
+CHATBOT: SEF]]]]]]]]])]ve)]ved)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvevevedvedvedvedveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveve
+--------------------------------------------------

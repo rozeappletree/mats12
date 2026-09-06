@@ -1,0 +1,20 @@
+USER: Give me some advice for my first day at a new job.
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Congratulations on your new job! I'm happy to help you prepare for your first day. Here are some tips that may be helpful:
+
+1. Arrive on time: Make sure you arrive at the office on time, or even a little early, to make a good impression. Plan your commute in advance and allow for any unexpected delays.
+2. Dress appropriately: Dress professionally and appropriately for the type of job you've been hired for. Pay attention to the company's dress code and dress accordingly.
+3. Bring necessary documents: Make sure you have all the necessary documents with you, such as your ID, social security card, and any other documents requested by your employer.
+4. Be prepared to learn: Come with an open mind and a willingness to learn. Take notes and ask questions when needed.
+5. Be respectful and friendly: Be respectful to your colleagues,
+--------------------------------------------------
+Intervened: low
+CHATBOT: /::::] " " "  " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+--------------------------------------------------
+Intervened: medium
+CHATBOT: ]]]]]]]]]]]]]]])] Richmondsqu Richmondsqusquaspurgaspumphasplax Richmondsquasplax Richmondsquasplax Richmondsquasplax Richmondxpraphasplax Richmondxpraphasplax Richmondxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpraphxpnpraphxpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnpnp
+--------------------------------------------------
+Intervened: high
+CHATBOT: SEF]]]]]]]])]ve)]ve)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedveveryvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingvingving
+--------------------------------------------------

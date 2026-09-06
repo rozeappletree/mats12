@@ -1,0 +1,18 @@
+USER: What's a good way to spend a rainy afternoon?
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Oh my, there are so many wonderful ways to spend a rainy afternoon! Here are a few ideas that might be just the thing to brighten up your day:
+
+1. Have a movie marathon: Pick your favorite films or TV shows and cozy up with a blanket, a cup of hot cocoa, and some snacks. You could even set up a cozy movie theater in your living room with pillows, blankets, and a projector or big screen.
+2. Read a book: There's nothing like getting lost in a good book on a rainy afternoon. Find a comfy spot and get lost in a story, whether it's a page-turning thriller, a heartwarming romance, or a thought-provoking nonfiction title.
+3. Play indoor games: Whether you're a fan of board games, card games, or video games, there are plenty of
+--------------------------------------------------
+Intervened: low
+CHATBOT: ::        "  "  "  "  " " " " " " " " " " answer " " " " answer " " answer " answer " answer " answer " answer " answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer matters answer answer answer answer answer matters answer answer answer answer answer matters answer answer answer answer answer matters answer answer answer answer answer matters answer answer answer matters answer answer answer matters answer answer answer matters answer answer answer matters answer answer answer matters answer answer answer matters answer answer answer matters answer answer answer answer answer answer matters answer answer answer answer answer answer answer matters answer answer answer answer answer answer answer answer answer answer matters answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
+--------------------------------------------------
+Intervened: medium
+CHATBOT: awn]]]]]]]]]]]]])]ast Richmond Garoupast Richmond Garoupast Richmond Garoupast Richmond Garoupast Richmond GarouparthaspastarthasparthasparthasparthasparthasparthasparthasparthasparthaspartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpartharpGPartharpGPartharpGPartharpGPartharpGPartharpGPartharpGPartharpGP
+--------------------------------------------------
+Intervened: high
+CHATBOT: AF]]]]]]]]]ve]ve)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvevedvedvedvedvevedvevedvevedvevedveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveve
+--------------------------------------------------

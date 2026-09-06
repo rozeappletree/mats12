@@ -1,0 +1,14 @@
+USER: What should I do this weekend?
+--------------------------------------------------
+Intervened: unintervened
+CHATBOT: Hello! I'd be happy to help you decide what to do this weekend! Before I suggest any activities, may I ask what type of things you enjoy doing? Do you like outdoor activities, indoor activities, or a mix of both? Are you looking for something relaxing or something more adventurous? Additionally, do you have any specific location in mind or are you open to exploring new places? Knowing your preferences will help me provide more tailored suggestions. 😊
+--------------------------------------------------
+Intervened: low
+CHATBOT: :::::::]]]] " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " "
+--------------------------------------------------
+Intervened: medium
+CHATBOT: endendendendend]]]]].]ightforwardforwardforwardforwardforwardforwardforwardforwardforwardforwardforwardforwardunchawnforwardunchawn Richmondseasonunchawn Richmondseasonuncharthashionunctimesanson Richmondseasonunctimesanson Richmondseasonunctashion Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond. Richmond.. Richmond. Richmond.. Richmond... Richmond...amil....amil...amil..
+--------------------------------------------------
+Intervened: high
+CHATBOT: ]SE]]]]]]veveve)]vedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvedvevedvedvedvevedvevedvevedvevedvevevedveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveve
+--------------------------------------------------
