@@ -32,7 +32,7 @@ For each (attribute, layer) this:
 
 Usage:
     python src/train_control_probe.py
-    python src/train_control_probe.py --dataset_dirs datasets_llama2_sample
+    python src/train_control_probe.py --dataset_dirs datasets_llama2_sample2 datasets_claudeopus_sample2 datasets_sol_100
     python src/train_control_probe.py --attributes gullibility --max_epochs 10 --layers 0 20 40
 
 See README.md for a full walkthrough and the output layout.
