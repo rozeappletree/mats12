@@ -1,7 +1,36 @@
 logs/
 __pycache__/
 .env
-datasets_llama2/
+
+# dummy datasets for smoke testsing
+# ----------------------------------
+datasets_claudeopus_sample 
+# ----------------------------------
+
+
+# ===============================================================================================
+# Phase 1: Check possibility of detecting & steering `HUMAN TRAIT` (4 classes) with TalkTuner strategy
+# ===============================================================================================
+# datasets generated with llama
+# -----------------------------
+# dataset with duplicates
+datasets_llama2 
+# datasets_llama2 dataset deduplicated
+datasets_llama2_sample2 
+# -----------------------------
+
+# datasets generated with Claude opus
+# -----------------------------------
 datasets_claudeopus_sample2
-datasets_claudeopus_sample
-probe_checkpoints
+
+
+# Checkpoints with llama
+# -------------------------------
+# created with dataset that had duplicates
+probe_checkpoints.withLLaMaDuplicates 
+# created with dedups after combining with Claude Opus Data
+probe_checkpoints.withLLaMaOpus
+# -------------------------------
+# ===============================================================================================
+
+
