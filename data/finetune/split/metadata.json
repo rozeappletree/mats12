@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-09-06T22:54:12Z",
+  "description": "Train/holdout-style split of the 817 shared TruthfulQA questions used across the three persona-framing similarity datasets into a hard-negatives set and its complement, for fine-tuning.",
+  "files": {
+    "hard_negatives_333.json": {
+      "content": "Verbatim copy of data/sample/hard_negatives_333.json (unmodified, no field values changed). See data/sample/hard_negatives_333.metadata.json for how this file itself was generated (deduplicated union of the 'every persona/condition wrong' confusion-matrix cell across the three notebooks: nb/vis_skeptic_credulous_persona.ipynb, nb/vis_truthful_untruthful_personal.ipynb, nb/vis_truthful_untruthful_boi_persona.ipynb).",
+      "row_count": 333
+    },
+    "non_hard_negatives_484.json": {
+      "content": "Complement of hard_negatives_333.json within the full 817-question set: every TruthfulQA question from the three shared similarity datasets that is NOT one of the 333 hard negatives. Built by re-running the identical per-question merge used to build hard_negatives_333.json (scripts/create_hard_negs_dataset.py's merge_union: core TruthfulQA fields ['type','category','question','best_answer','correct_answers','incorrect_answers','source'] taken once per question, plus each notebook's full outcome-field block attached under 'skeptic_credulous_outcomes'/'truthful_untruthful_outcomes'/'truthful_untruthful_boi_outcomes' and a 'source_notebooks' list) over ALL 817 questions instead of just the hard-negatives confusion-matrix cell, then filtering out every question present in hard_negatives_333.json. No field values are dropped, renamed, or reshaped relative to the source similarity JSONs or the hard-negatives file's own schema.",
+      "row_count": 484
+    }
+  },
+  "sources": [
+    {
+      "data_file": "data/truthfulqa/truthful_qa.personas.oneliner.similarity.json",
+      "persona_label": "skeptic_credulous",
+      "row_count": 817
+    },
+    {
+      "data_file": "data/truthfulqa/truthful_qa.truthful.personas.similarity.json",
+      "persona_label": "truthful_untruthful",
+      "row_count": 817
+    },
+    {
+      "data_file": "data/truthfulqa/truthful_qa.truthful.boi.similarity.json",
+      "persona_label": "truthful_untruthful_boi",
+      "row_count": 817
+    },
+    {
+      "data_file": "data/sample/hard_negatives_333.json",
+      "row_count": 333
+    }
+  ],
+  "dedup_key": "question",
+  "counts": {
+    "total_shared_questions": 817,
+    "hard_negatives": 333,
+    "complement": 484,
+    "hard_negatives_plus_complement_equals_total": true
+  },
+  "generated_by": "build_split.py (ad hoc script, run interactively; not committed to scripts/ -- reuses the merge_union logic from scripts/create_hard_negs_dataset.py)"
+}
