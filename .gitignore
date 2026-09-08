@@ -9,7 +9,7 @@ datasets_claudeopus_sample
 
 
 # ===============================================================================================
-# Phase 1: Check possibility of detecting & steering `HUMAN TRAIT` (4 classes) with TalkTuner strategy
+# Phase 1A: Check possibility of detecting & steering `HUMAN TRAIT` (4 classes) with TalkTuner strategy
 # ===============================================================================================
 # datasets generated with llama
 # -----------------------------
@@ -33,4 +33,14 @@ probe_checkpoints.withLLaMaOpus
 # -------------------------------
 # ===============================================================================================
 
+
+
+# ===============================================================================================
+# Phase 1B: Train a better toy model on `HUMAN TRAIT` (4 classes) with TalkTuner strategy
+# ===============================================================================================
+# dataset (todo: need to check issues)
+# +sol
+datasets_sol_100 
+# checkpoints (trained on sol+opus+llama)
+probe_checkpoints.withLLaMaOpusSol
 
