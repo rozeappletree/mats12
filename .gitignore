@@ -5,6 +5,7 @@ __pycache__/
 # dummy datasets for smoke testsing
 # ----------------------------------
 datasets_claudeopus_sample 
+datasets_hard_333.sampleWithSol/
 # ----------------------------------
 
 
@@ -44,3 +45,13 @@ datasets_sol_100
 # checkpoints (trained on sol+opus+llama)
 probe_checkpoints.withLLaMaOpusSol
 
+
+# =================================================================================================
+# Phase 2A: SeeGULL v0.1, trained on general gullibility (hi/lo) and tested on truth qa qns that are not "not hard"
+# =================================================================================================
+# dataset (same data as phase 1b, just kept only the gullible samples)
+datasets_regular_gullibility_170
+# evaluated on "not" hard part of truthqa for 
+datasets_defense_484
+# checkpoints
+probe_checkpoints.withRegularGullibility
