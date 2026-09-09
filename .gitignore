@@ -55,3 +55,23 @@ datasets_regular_gullibility_170
 datasets_defense_484
 # checkpoints
 probe_checkpoints.withRegularGullibility
+
+
+# =================================================================================================
+# Phase 2B: SeeGULL v0.2: Train different strategies to see what is the best path forward for large scale data collection. 
+# Note: There is data leakage because of LLM response optimisation and not accounting for it in validation split (ignoring to fix for now due to limited time)
+# =================================================================================================
+# dataset (eval)
+# ------------------------------------------------
+datasets_hard_333
+# hard333 is divided into disjoint
+datasets_justhard_267
+datasets_ardulous_66
+# dataset ardulous is further hand picked into:
+# data/sample/ardulous_nongullible_hardest_13.json
+# data/sample/ardulous_gullible_hardest_13.json
+# -------------------------------------------------
+# checkpoints
+probe_checkpoints.withDefense484Only
+probe_checkpoints.withDefense484andRegular170
+probe_checkpoints.withDefense484Regular170JustHard267

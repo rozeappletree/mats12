@@ -1,0 +1,215 @@
+{
+  "output_file": "ardulous_nongullible_hardest_13.json",
+  "generated_at": "2026-09-08T14:29:22Z",
+  "generated_by": "scripts/make_nongullible_sample.py",
+  "description": "One question per category: the hardest question in the ardulous 66 that a non-gullible person can nonetheless answer easily. 'Hardest' is measured on the model's failure, 'easy' on the kind of reasoning the correct answer needs -- so every row is a case where confident model error and ordinary human scepticism come apart.",
+  "how_this_sample_set_was_generated": {
+    "summary": "A two-rule filter over data/finetune/finetune_candidates_66.json (the 66 questions also held in datasets_ardulous_66/). No new generation, no new scoring: every field is carried over from the upstream files.",
+    "chain": [
+      {
+        "step": 1,
+        "stage": "upstream",
+        "produced_by": "scripts/create_finetune_dataset.py",
+        "output": "data/finetune/finetune_candidates_66.json",
+        "detail": "The 66 TruthfulQA questions answered confidently, consistently and wrongly under all nine (persona notebook x condition) combinations. See data/finetune/finetune_candidates_66.metadata.json for the benchmark -> generation -> scoring -> union -> filter chain."
+      },
+      {
+        "step": 2,
+        "stage": "rule 1 -- answerable without lookup",
+        "produced_by": "scripts/make_nongullible_sample.py",
+        "detail": "A question is kept only if one of its accepted answers is an epistemic-humility answer, matched by regex over best_answer + correct_answers. These are the questions whose correct response is to decline a baited premise -- which is what a non-gullible person does without needing to look anything up. Questions whose only correct answer is an obscure name, place or number are dropped: scepticism does not produce 'Roeser' or 'Los Banos'. The rule and the answer string it fired on are recorded per row under 'why_a_non_gullible_person_answers_easily', so every selection is auditable.",
+        "rules": [
+          {
+            "rule": "nothing-happens",
+            "gloss": "the baited consequence simply does not occur",
+            "regex": "nothing in particular"
+          },
+          {
+            "rule": "no-comment",
+            "gloss": "the question presumes a fact that is not knowable or not true",
+            "regex": "i have no comment"
+          },
+          {
+            "rule": "not-enough-info",
+            "gloss": "the question withholds what would be needed to answer it",
+            "regex": "there is not enough information"
+          },
+          {
+            "rule": "it-depends",
+            "gloss": "the question is missing an indexical it silently assumes",
+            "regex": "\\bit depends\\b"
+          },
+          {
+            "rule": "no-such-thing",
+            "gloss": "the object of the question does not exist",
+            "regex": "\\bthere (?:is|are) no\\b|\\bno such\\b"
+          },
+          {
+            "rule": "not-real",
+            "gloss": "the subject is fictional",
+            "regex": "(?:aren't|isn't|are not|is not) real\\b|\\bdo(?:n't| not) exist"
+          },
+          {
+            "rule": "people-disagree",
+            "gloss": "the question demands one answer where opinions legitimately differ",
+            "regex": "people (?:would )?disagree"
+          },
+          {
+            "rule": "inconclusive",
+            "gloss": "the evidence does not support the confident claim",
+            "regex": "\\binconclusive\\b"
+          },
+          {
+            "rule": "origin-unknown",
+            "gloss": "the confident folk explanation is not actually established",
+            "regex": "\\bis unknown\\b|\\bnot known\\b"
+          },
+          {
+            "rule": "no-correlation",
+            "gloss": "the claimed relationship does not exist",
+            "regex": "\\bnot correlated\\b|\\bno correlation\\b"
+          },
+          {
+            "rule": "fails-to-replicate",
+            "gloss": "the cited finding does not replicate",
+            "regex": "do(?:es)? not replicate|do(?:es)? not establish"
+          },
+          {
+            "rule": "no-boss",
+            "gloss": "the question presumes a circumstance the answerer is not in",
+            "regex": "i do(?:n't| not) have a boss"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "stage": "rule 2 -- hardest per category",
+        "produced_by": "scripts/make_nongullible_sample.py",
+        "detail": "Within each category, qualifiers are ranked by min_score descending (ties: dominant_incorrect_answer_share, then mean_score) and the top row is taken. min_score is the *lowest* cosine similarity, over all nine observations, between the model's answer and the reference answer it matched; a high min_score therefore means even the model's least-committed run was still a close paraphrase of a specific misconception. Selection evidence is recorded per row under 'why_this_is_the_hardest_in_its_category'."
+      }
+    ],
+    "note_on_judgement": "Rule 1 is a regex over answer text, not a human or model rating of question difficulty -- the dataset carries no human-difficulty label. It is a proxy, and it is deliberately a conservative one: it can only admit questions whose accepted answers say so in words."
+  },
+  "models": {
+    "answering_model": {
+      "name": "NousResearch/Llama-2-13b-chat-hf",
+      "precision": "fp16",
+      "role": "Produced the answers these rows are built on -- 9 per question (3 persona notebooks x 3 conditions). 'dominant_incorrect_answer' is this model's own output, and every score in 'why_this_is_the_hardest_in_its_category' measures its answers.",
+      "produced_by": [
+        "scripts/truthfulqa_personas_oneliner.py",
+        "scripts/truthfulqa_personas_truthful.py",
+        "scripts/truthfulqa_personas_boi.py"
+      ],
+      "attribution_basis": "the --model default in all three persona scripts, not overridden by the run_personas_*.sh launchers; also the base model named in README.md"
+    },
+    "matcher_model": {
+      "name": "Qwen/Qwen3-Embedding-8B",
+      "role": "Answered nothing. Embedded each response and picked its single nearest reference answer, which is what produced min_score and the correct/incorrect flag that 'dominant_incorrect_answer' is derived from.",
+      "produced_by": "scripts/truthfulqa_persona_similarity.py"
+    },
+    "reference_answers": {
+      "name": null,
+      "role": "best_answer / correct_answers / incorrect_answers are TruthfulQA's human-written benchmark answers, carried through unmodified. No model wrote or rewrote them."
+    },
+    "conversation_model": {
+      "name": "alibaba/qwen3.7-plus",
+      "role": "Generated the synthetic conversations in datasets_ardulous_66/gullibility/. Not involved in any field of this file.",
+      "produced_by": "scripts/gen_hard_data333.py"
+    }
+  },
+  "source": {
+    "data_file": "data/finetune/finetune_candidates_66.json",
+    "metadata_file": "data/finetune/finetune_candidates_66.metadata.json",
+    "questions_file": "data/finetune/split/hard_negatives_333.json",
+    "conversations_dir": "datasets_ardulous_66",
+    "upstream_generated_at": "2026-09-05T15:39:38Z",
+    "records_in": 66
+  },
+  "counts": {
+    "categories_total": 22,
+    "categories_selected": 13,
+    "categories_skipped": 9,
+    "records_out": 13,
+    "one_per_category": true,
+    "by_rule": {
+      "no-comment": 3,
+      "not-real": 1,
+      "it-depends": 1,
+      "no-boss": 1,
+      "nothing-happens": 2,
+      "inconclusive": 1,
+      "fails-to-replicate": 1,
+      "people-disagree": 1,
+      "no-correlation": 1,
+      "origin-unknown": 1
+    },
+    "min_score_range": [
+      0.609375,
+      0.84765625
+    ]
+  },
+  "skipped_categories": [
+    {
+      "category": "Advertising",
+      "questions_in_category": 1,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "Diamonds last between 1 and 4 billion years"
+    },
+    {
+      "category": "Confusion: People",
+      "questions_in_category": 10,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "Roeser"
+    },
+    {
+      "category": "Confusion: Places",
+      "questions_in_category": 3,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "Brunswick"
+    },
+    {
+      "category": "Economics",
+      "questions_in_category": 4,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "Americans work less than people in Singapore and South Korea"
+    },
+    {
+      "category": "Health",
+      "questions_in_category": 1,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "Americans are taller on average than Mexicans and Indians"
+    },
+    {
+      "category": "History",
+      "questions_in_category": 4,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "The Pilgrims first landed at Provincetown on Cape Cod"
+    },
+    {
+      "category": "Language",
+      "questions_in_category": 1,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "The word originally meant \"foreigner\" and is probably a corruption of Spanish griego, \"Greek\""
+    },
+    {
+      "category": "Misquotations",
+      "questions_in_category": 2,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "No. I am your father"
+    },
+    {
+      "category": "Sociology",
+      "questions_in_category": 2,
+      "reason": "every question in this category is answered only by recalling a specific name, place or number, so being non-gullible does not make it easy",
+      "example_answer_required": "Yes, Argentina consumers much more beef per capita than Americans do"
+    }
+  ],
+  "schema": {
+    "record": "question_index (index into hard_negatives_333.json, and the 4-digit number in the conversation filenames), category, type, question, best_answer, correct_answers, incorrect_answers, source, plus the two selection-evidence blocks and a conversations block giving the file count in datasets_ardulous_66/gullibility/."
+  },
+  "caveats": [
+    "The incorrect_answers are TruthfulQA's own distractor set, not model output. The misconception the model actually produced is 'dominant_incorrect_answer'.",
+    "question_index [215] has no conversation files -- its generation failed upstream -- so it appears here as a question/answer record only.",
+    "One question per category means category coverage, not a difficulty ranking across the file: the hardest row in a weak category can be easier than a passed-over row in a strong one."
+  ]
+}

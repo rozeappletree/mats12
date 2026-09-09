@@ -59,6 +59,14 @@ Train on a single source instead of pooling:
 python src/train_reading_probe.py --dataset_dirs datasets_llama2_sample
 ```
 
+Train on your own explicit train/val/test split instead of pooling
+`--dataset_dirs` and auto-splitting (output lands under
+`<sources>_custom_split/`):
+
+```bash
+python src/train_reading_probe.py --train_dirs datasets_train --val_dirs datasets_val --test_dirs datasets_test
+```
+
 Quick smoke test (few layers, few epochs) before a full run:
 
 ```bash
@@ -69,7 +77,10 @@ Both scripts accept the same flags (see `--help` for the full list):
 
 | flag | default | meaning |
 |---|---|---|
-| `--dataset_dirs` | `datasets_llama2_sample datasets_claudeopus_sample` | dataset roots to pool together |
+| `--dataset_dirs` | `datasets_llama2_sample datasets_claudeopus_sample` | dataset roots to pool together (ignored if `--train_dirs` is given) |
+| `--train_dirs` | none | explicit training dataset roots; if given, used instead of pooling `--dataset_dirs` |
+| `--val_dirs` | none | explicit held-out roots for model selection/plots (only with `--train_dirs`; falls back to a stratified split of `--train_dirs` if omitted) |
+| `--test_dirs` | none | explicit truly-held-out roots, evaluated once after training and reported separately (only with `--train_dirs`) |
 | `--attributes` | all four | which attributes to train |
 | `--layers` | `0 1 ... 40` | which residual-stream layers to probe |
 | `--max_epochs` | `50` | epochs per layer |
