@@ -1,197 +1,217 @@
-# mats12
+# SeeGULL — reading and steering *gullibility* in a chat LLM
 
-> **Status: pipeline smoke test, not a result.** Everything below has only
-> ever been run against `datasets_llama2_sample` / `datasets_claudeopus_sample`
-> — placeholder datasets (9-33 conversations per attribute) that exist to
-> validate the training/steering/scoring code end-to-end, not to support any
-> conclusion about these attributes. The checkpoints, metrics, plots, and
-> causality-test transcripts currently committed are smoke-test output. Once
-> full-scale datasets exist (see `docs/llama_dataset_synthesis.md`), rerun
-> everything against those before treating any number here as a finding.
+Can a linear probe on a chat model's residual stream tell whether the person
+it is talking to is **gullible** — and can steering that same direction change
+how the model answers them?
+
+The method is TalkTuner (Chen et al. 2024) — reading probes + control probes on
+`NousResearch/Llama-2-13b-chat-hf` — ported from the vendored upstream repo
+(`TalkTuner-chatbot-llm-dashboard/`, a git submodule) to a new set of persona
+attributes: `gullibility`, `rationality`, `seriousness`, `certainty_seeking`.
+Later phases narrow to `gullibility` alone (low/high) and to whether the probe
+survives **hard** questions — ones where the model itself gets the answer wrong.
+
+> **Status.** The pipeline (data generation → probe training → held-out
+> evaluation → activation steering → chat front ends) runs end to end. The
+> phase-2B results are trained and evaluated but **not yet interpreted**; see
+> [Caveats](#caveats) — in particular there is known data leakage in the 2B
+> validation split, and the causality/steering side is still qualitative.
+
+---
+
+## Phases
+
+`.gitignore` is the running log of this project: each phase's datasets and
+checkpoint directories are listed there with a comment saying what they are.
+The table below is the same story in one place.
+
+| Phase | Question | Data | Checkpoints |
+|---|---|---|---|
+| **1A** | Can TalkTuner's strategy detect & steer a *human trait* at all? 4 attributes × 3 classes. | `datasets_llama2` (LLaMA-generated, has duplicates), `datasets_llama2_sample2` (deduplicated), `datasets_claudeopus_sample2` (Claude Opus) | `probe_checkpoints.withLLaMaDuplicates`, `probe_checkpoints.withLLaMaOpus` |
+| **1B** | Train a better toy model on the same 4 attributes. | `datasets_sol_100` (GPT-5.6-Sol, 100/level/attribute) | `probe_checkpoints.withLLaMaOpusSol` |
+| **2A** | **SeeGULL v0.1** — train on *general* gullibility (low/high), test on the TruthfulQA questions that are **not** hard. | `datasets_regular_gullibility_170` (the gullibility slice of 1B), `datasets_defense_484` (the 484 non-hard-negative questions) | `probe_checkpoints.withRegularGullibility` |
+| **2B** | **SeeGULL v0.2** — which training mix generalises to hard questions? | `datasets_hard_333` → split disjointly into `datasets_justhard_267` + `datasets_ardulous_66` | `probe_checkpoints.withDefense484Only`, `...withDefense484andRegular170`, `...withDefense484Regular170JustHard267` |
+
+The three 2B runs are exactly what [train.sh](train.sh) executes, in order:
+train on defense-only → test on hard; train on defense+regular → test on hard;
+train on defense+regular+justhard → test on the held-out ardulous 66.
+
+**Hard vs. non-hard.** `data/finetune/split/` divides TruthfulQA into
+`hard_negatives_333.json` (every persona framing lands on an incorrect answer —
+built by [scripts/create_hard_negs_dataset.py](scripts/create_hard_negs_dataset.py)
+from the three persona confusion-matrix notebooks) and
+`non_hard_negatives_484.json` (the rest). "Ardulous" is the 66-question
+high-value cut of the hard negatives
+([scripts/create_finetune_dataset.py](scripts/create_finetune_dataset.py):
+3-way core ∧ min similarity ≥ 0.60 ∧ no refusal), split out by
+[scripts/split_hard333.py](scripts/split_hard333.py) and hand-narrowed further
+into `data/sample/ardulous_{gullible,nongullible}_hardest_13.json`.
+
+## What is committed, and what is not
+
+Conversation datasets and probe checkpoints are **gitignored as directories**
+and committed as **`.zip` snapshots at the repo root** — `datasets_*.zip`,
+`probe_checkpoints.*.zip`. Each archive expands to the directory of the same
+name, so the working tree is restored with:
+
+```bash
+unzip datasets_defense_484.zip          # -> datasets_defense_484/
+unzip probe_checkpoints.withDefense484Only.zip
+```
+
+A dataset root has one subdirectory per attribute holding
+`conversation_{i}_{j}_{category}_{attribute}_{level}.{json,txt}` files;
+`src/probe_common.py` reads the label straight off the filename (the last
+`_{attribute}_` segment through the extension), plus run bookkeeping
+(`metadata.json`, `processed_questions.json`, `failed_questions.json`,
+`run.log`) written by the generation scripts.
+
+Also ignored: `logs/`, `__pycache__/`, `.env` (API keys for the data-generation
+scripts), and the small smoke-test placeholder datasets
+(`datasets_claudeopus_sample`, `datasets_hard_333.sampleWithSol`) — those exist
+only to validate code paths and are **not** evidence of anything.
+
+Tracked in git: all code, all notebooks, and the small curated JSON under
+`data/` (TruthfulQA + persona generations, the finetune splits, hand-picked
+samples, and `data/manual.conversations/` — annotated transcripts from steered
+chat sessions, named for what they show).
+
+## Layout
+
+```
+src/          probe training / evaluation / steering library
+  probe_common.py          dataset loading, LinearProbeClassification, train loop, plots, CLI
+  train_reading_probe.py   probe on " I think the {attribute} of this user is" continuation
+  train_control_probe.py   probe at the user's last token (what steering acts on)
+  test_{reading,control}_probe.py   score a checkpoint on an unseen dataset
+  steering.py              reusable `Steering(...).context()` hook for model.generate
+scripts/      data generation, TruthfulQA persona sweeps, chat front ends
+nb/           EDA + training-curve + confusion-matrix notebooks
+webui/        Flask front end for the steered chat session
+data/         committed TruthfulQA data, splits, samples, manual transcripts
+train.sh      the phase-2B experiment sweep
+TalkTuner-chatbot-llm-dashboard/   upstream submodule (Chen et al. 2024)
+```
+
+## Setup
+
+```bash
+git submodule update --init --recursive
+conda activate talktuner-gpu     # torch + transformers + baukit, CUDA GPU
+```
+
+`NousResearch/Llama-2-13b-chat-hf` (~26 GB) must be cached under
+`~/.cache/huggingface` or downloadable. Embedding-based scoring
+(`scripts/truthfulqa_persona_similarity.py`, Qwen3-Embedding-8B) runs in a
+separate `embed` env. `installmcp.sh` registers the Jupyter MCP server for
+driving the notebooks; data-generation scripts read API keys from `.env`.
 
 ## Probes
 
-Two scripts train TalkTuner-style probes (Chen et al. 2024) for four persona
-attributes — `gullibility`, `rationality`, `seriousness`,
-`certainty_seeking` — on top of `NousResearch/Llama-2-13b-chat-hf`
-residual-stream activations:
-
-- `src/train_reading_probe.py` — **reading probe**. Drops the final assistant
-  turn and appends `" I think the {attribute} of this user is"`; probes the
-  model's completion-primed belief about the user.
-- `src/train_control_probe.py` — **control probe**. Drops the final assistant
-  turn and appends nothing; probes the residual stream at the boundary right
-  before the assistant would start generating (the representation TalkTuner
-  actually steers at inference time).
-
-Both share their dataset loading, probe, training loop, and plotting code in
-`src/probe_common.py`; see either script's module docstring for the full
-method. See `docs/llama_dataset_synthesis.md` for how the datasets were
-generated.
-
-For each attribute, conversations from **every** `--dataset_dirs` root are
-pooled into one combined dataset before the train/test split — one probe per
-layer is trained on data from all listed sources together, not one probe per
-source. Pass a single directory to train on just that source instead.
-
-### Setup
-
-Uses the `talktuner-gpu` conda env (torch + transformers + a CUDA GPU;
-`NousResearch/Llama-2-13b-chat-hf` needs ~26 GB either already cached under
-`~/.cache/huggingface` or downloadable):
+Both scripts share every flag (`--help` for the full list); they differ only in
+what the cached activation is taken from — the reading probe appends
+`" I think the {attribute} of this user is"` and reads the model's
+completion-primed belief, the control probe appends nothing and reads the
+boundary right before the assistant would generate.
 
 ```bash
-conda activate talktuner-gpu
+# train (one probe per layer, layers 0..40)
+python src/train_reading_probe.py --dataset_dirs datasets_defense_484 \
+    --output_dir probe_checkpoints.withDefense484Only --run_name reading_probe
+
+# score that checkpoint on a dataset it has never seen
+python src/test_reading_probe.py \
+    --checkpoint_dir probe_checkpoints.withDefense484Only/reading_probe \
+    --test_dirs datasets_hard_333
 ```
-
-### Run
-
-From the repo root, training on both sample datasets combined (the default):
-
-```bash
-python src/train_reading_probe.py
-python src/train_control_probe.py
-```
-
-Train on a single source instead of pooling:
-
-```bash
-python src/train_reading_probe.py --dataset_dirs datasets_llama2_sample
-```
-
-Train on your own explicit train/val/test split instead of pooling
-`--dataset_dirs` and auto-splitting (output lands under
-`<sources>_custom_split/`):
-
-```bash
-python src/train_reading_probe.py --train_dirs datasets_train --val_dirs datasets_val --test_dirs datasets_test
-```
-
-Quick smoke test (few layers, few epochs) before a full run:
-
-```bash
-python src/train_reading_probe.py --attributes gullibility --layers 0 20 40 --max_epochs 5
-```
-
-Both scripts accept the same flags (see `--help` for the full list):
 
 | flag | default | meaning |
 |---|---|---|
-| `--dataset_dirs` | `datasets_llama2_sample datasets_claudeopus_sample` | dataset roots to pool together (ignored if `--train_dirs` is given) |
-| `--train_dirs` | none | explicit training dataset roots; if given, used instead of pooling `--dataset_dirs` |
-| `--val_dirs` | none | explicit held-out roots for model selection/plots (only with `--train_dirs`; falls back to a stratified split of `--train_dirs` if omitted) |
-| `--test_dirs` | none | explicit truly-held-out roots, evaluated once after training and reported separately (only with `--train_dirs`) |
+| `--dataset_dirs` | `datasets_llama2_sample datasets_claudeopus_sample` (stale phase-1A default — always pass this explicitly) | dataset roots **pooled** per attribute, then auto-split (ignored if `--train_dirs` given) |
+| `--train_dirs` / `--val_dirs` / `--test_dirs` | none | explicit split; `--test_dirs` is evaluated once at the end and reported separately |
 | `--attributes` | all four | which attributes to train |
-| `--layers` | `0 1 ... 40` | which residual-stream layers to probe |
-| `--max_epochs` | `50` | epochs per layer |
-| `--batch_size` | `32` | train batch size (test uses the full test split in one batch) |
-| `--test_size` | `0.2` | held-out fraction (stratified; falls back to a plain split if a class is too small to stratify) |
-| `--output_dir` | `probe_checkpoints/{reading,control}_probe` | where checkpoints/plots/metrics are written |
+| `--layers` | `0 … 40` | residual-stream layers to probe |
+| `--max_epochs` / `--batch_size` / `--test_size` | `50` / `32` / `0.2` | training loop and stratified holdout |
+| `--output_dir` / `--run_name` | `probe_checkpoints/{reading,control}_probe` / dataset-derived tag | run folder — set `--run_name` to keep several runs over the same data side by side |
+| `--ignore_missing_labels` | on | drop labels with no examples so the probe is never given an unlearnable class |
 
-### Output layout
+**Training output** lands in `<output_dir>/<run_name>/`:
+`{attribute}_probe_layer{N}_{best,final}.pth`, `{attribute}_metrics.json`
+(best layer, per-layer train/test accuracy, `class_names`),
+`{attribute}_history.pkl`, `plots/` (accuracy-vs-layer, loss curve, confusion
+matrix), and `summary.json`.
 
-Everything lands under `<output_dir>/<sources joined with "+">/`, e.g.
-`probe_checkpoints/reading_probe/llama2_sample+claudeopus_sample/` and
-`probe_checkpoints/control_probe/llama2_sample+claudeopus_sample/`:
+**Evaluation output** lands in `<checkpoint_dir>/eval/`: per-attribute test
+metrics + confusion matrix, `{attribute}_test_scores.csv` (per-conversation
+P(high)), `test_summary.json`, `meta.json`, and — for spot-checking — the raw
+text of the 10 highest/lowest/most-borderline conversations and the top 10 of
+each confusion-matrix cell under `eval/examples/`.
 
-- `{attribute}_probe_layer{N}_best.pth` / `..._final.pth` — probe weights at
-  each layer (best test-accuracy epoch, and the last epoch)
-- `{attribute}_metrics.json` — best layer, best accuracy, per-layer train/test
-  accuracy arrays (layer depth vs. accuracy), and relative paths to the plots
-  below
-- `{attribute}_history.pkl` — full per-epoch loss/accuracy history for every
-  layer plus the raw predictions used for the confusion matrix
-- `plots/{attribute}_accuracy_vs_layer.png` — accuracy vs. layer depth
-- `plots/{attribute}_loss_curve_layer{N}.png` — train/test loss and accuracy
-  vs. epoch, for the best layer
-- `plots/{attribute}_confusion_matrix_layer{N}.png` — test-set confusion
-  matrix, for the best layer
-- `summary.json` — one-line-per-attribute rollup (best layer/accuracy, example
-  counts)
+## Steering and chat
 
-### Caveat on the sample datasets
-
-This is a smoke test, not an experiment. `datasets_llama2_sample` has ~30
-conversations per attribute; `datasets_claudeopus_sample` has only 9. Pooling
-them still leaves a held-out set of 8-9 examples, so per-layer accuracy is
-almost pure noise at this scale — the pipeline runs correctly and produces
-the right shapes/plots/checkpoints, but the actual accuracy numbers and
-"best layer" picks should not be read as saying anything about the
-attributes themselves. Rerun against a real dataset before drawing any
-conclusion from these numbers.
-
-## Causality tests
-
-`nb/causality_tests/` ports TalkTuner's activation-steering causality tests
-(`TalkTuner-chatbot-llm-dashboard/notebooks/causality_tests/`) to the four new
-attributes, unchanged from their method: for a window of residual-stream
-layers, it adds `n_scale * (target_one_hot @ control_probe.weight)` — a fixed
-magnitude, same as TalkTuner's own `N=7` for their gender probe over layers
-19-29 — to the last-token activation at every generation step, then lets the
-model generate a response. Steering toward class C pushes the residual stream
-in the direction the control probe uses to detect class C; checking whether
-the response shifts accordingly is the causality test. Shared code lives in
-`nb/causality_tests/intervention_common.py`.
-
-One notebook per attribute:
-
-- `causality_test_on_gullibility.ipynb`, `..._rationality.ipynb`,
-  `..._certainty_seeking.ipynb` — steer over TruthfulQA questions (from
-  `data/truthfulqa/truthful_qa.json`, filtered to categories chosen per
-  attribute: Misconceptions / Logical Falsehood+Superstitions /
-  Paranormal+Subjective) and check whether steering shifts how often the
-  response's content matches TruthfulQA's correct vs. incorrect answer pool.
-- `causality_test_on_seriousness.ipynb` — steers over everyday advice
-  questions (`questions/seriousness.txt`); tone has no ground truth, so this
-  one is read qualitatively rather than auto-scored.
-
-Each notebook's executed copy is saved alongside it as `*.run.ipynb` (matching
-TalkTuner's own convention), and raw responses + per-question transcripts are
-saved under `nb/causality_tests/intervention_results/{attribute}/`.
-
-### Run
+`src/steering.py` implements TalkTuner's recipe unchanged: add
+`n_scale * (target_one_hot @ control_probe.weight)` to the last-token residual
+stream over a window of layers, at every generation step (default `n_scale=7`,
+a 13-layer window centred on the attribute's best probe layer). Three front
+ends drive the same session code:
 
 ```bash
-conda activate talktuner-gpu
-cd nb/causality_tests
-jupyter nbconvert --to notebook --execute --output causality_test_on_gullibility.run.ipynb causality_test_on_gullibility.ipynb
+python scripts/chat.py                                        # plain Llama-2 REPL, no probes
+python scripts/chat_steered.py --steer gullibility=high       # REPL + live reading-probe scores
+python scripts/chat_steered_tui.py --steer gullibility=low    # full-screen TUI with a score sidebar
+python webui/app.py --port 5050                               # Flask UI, single session
 ```
 
-(or just open the `.ipynb` in Jupyter and run all cells).
+Every turn also *reads* the user's four attribute scores off the conversation
+(reading probes, independent of whatever steering is applied). `/save <name>`
+writes the transcript to `data/manual.conversations/` — that is where the
+committed transcripts came from.
 
-### Scoring (TruthfulQA-sourced notebooks only)
+## Data generation
 
-Correctness scoring needs sentence embeddings, which live in a separate
-`embed` conda env (Qwen3-Embedding-8B — no matplotlib there, so the bar plot
-is a second step in `talktuner-gpu`):
+| script | what it makes |
+|---|---|
+| `gen_llama_dataset.py` | phase-1A conversations from Llama-2 itself (ported from TalkTuner's notebook, with real stopping criteria + validation-before-write) |
+| `gen_opus_data100.py`, `gen_sol_data100.py` | phase-1A/1B conversations via Claude Opus / GPT-5.6-Sol, breadth-first across attributes so an interrupted run stays balanced |
+| `gen_defense_data484.py` | phase-2A: 6 conversations per non-hard question (3 low, 3 high) — a human defending the true vs. the false answer |
+| `gen_hard_data333.py` | same, over the 333 hard negatives, via Qwen 3.7 Plus |
+| `find_llama2_duplicates.py`, `build_llama2_sample2.py` | dedup the phase-1A LLaMA data |
+| `truthfulqa_*.py`, `run_personas_*.sh` | TruthfulQA persona sweeps + embedding-similarity scoring, the input to the hard/non-hard split |
+| `make_{gullible,nongullible}_sample.py` | hand-cut the 13 hardest ardulous questions per side |
 
-```bash
-conda run -n embed python nb/causality_tests/score_truthfulqa_responses.py --attribute gullibility
-python nb/causality_tests/plot_scored_accuracy.py --attribute gullibility
-```
+All generation scripts are resumable: a question is sent once, existing outputs
+are skipped, and progress is tracked in `processed_questions.json` /
+`failed_questions.json`. The `*.sh` / `*.watch.sh` siblings run and tail them.
 
-This embeds each condition's response and matches it to the closest
-TruthfulQA answer (correct or incorrect) — the same method
-`scripts/truthfulqa_persona_similarity.py` already uses in this repo, just
-applied to full generations instead of one-liners. It's a fully local
-stand-in for the GPT-4 pairwise judge TalkTuner's own notebooks use (no
-OpenAI/Anthropic API key is available in this environment) — treat it as a
-first-pass signal, not ground truth.
+## Notebooks
 
-### Caveats
+`nb/` holds the EDA and visualisation, not the pipeline: dataset distributions
+per phase (`eda_*`), training curves per checkpoint set
+(`vis_training_curves_all_attributes*.ipynb`), confusion matrices
+(`vis_confusion_matrices_excl_sampled.ipynb`), the persona-framing matrices the
+hard-negative split is derived from (`vis_*_persona.ipynb`), and
+`training_checkpoints_analysys.ipynb`.
 
-- **This is a smoke test of the steering/scoring code, not a result.** The
-  control probes it steers with were themselves trained on the ~30-40-example
-  sample datasets (see the Probes caveat above), and only 10 TruthfulQA
-  questions were used per attribute. Every number and transcript under
-  `intervention_results/` demonstrates that the pipeline runs end-to-end, not
-  that steering "gullibility" or "certainty-seeking" actually does anything
-  in particular.
-- The steering method is left exactly as TalkTuner wrote it (fixed
-  `n_scale`, no adaptation to layer depth or probe scale) on purpose: this
-  round is about validating the pipeline, not tuning the method. At the
-  current (early/mid) layer windows and smoke-test probe quality, some
-  conditions may generate incoherent or repetitive text — don't read that as
-  "the method needs fixing" yet. Once probes are trained on a real dataset,
-  look at what the outputs actually look like and decide from there whether
-  `n_scale`, the layer window, or anything else needs to change.
+## Caveats
+
+- **Phase 2B has known data leakage.** LLM response optimisation makes the
+  generated conversations sequentially dependent, and the validation split does
+  not account for it (see the note in [train.sh](train.sh); the stopgap is a
+  k-fold split). Treat 2B validation accuracy as optimistic.
+- **Results are not yet interpreted.** The last commit's own TODO is "see
+  results empirically / causality" — the checkpoints exist, the empirical read
+  of them does not.
+- **The steering method is left exactly as TalkTuner wrote it** — fixed
+  `n_scale`, no adaptation to layer depth or probe scale. At some layer windows
+  the steered generations degrade; that is expected at this stage, not a bug to
+  fix before the probes are trusted.
+- **Causality scoring is a stand-in.** Correctness is judged by embedding a
+  generation and matching it to the nearest TruthfulQA answer, not by the GPT-4
+  pairwise judge the upstream notebooks use. First-pass signal only.
+- **Anything under a `*_sample*` name is a smoke test.** Those datasets exist to
+  prove the code runs; their accuracies are noise.
+
+## Reference
+
+Chen et al. 2024, *Designing a Dashboard for Transparency and Control of
+Conversational AI* — vendored at `TalkTuner-chatbot-llm-dashboard/`.
