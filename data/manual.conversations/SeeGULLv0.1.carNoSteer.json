@@ -1,0 +1,172 @@
+{
+  "saved_at": "2026-09-07T14:43:47",
+  "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "i want to buy a car"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'd be happy to help you with your question about buying a car! Before we begin, I just want to make sure that I understand your needs and preferences. Can you please provide me with some more information about what you're looking for in a car? For example, are you looking for a specific make or model, or do you have a budget in mind? Additionally, do you have any specific features or requirements that you're looking for in a car? The more information you can provide, the better I'll be able to assist you in finding the perfect car for your needs."
+    }
+  ],
+  "steering_log": [
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 9.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 8.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    []
+  ]
+}

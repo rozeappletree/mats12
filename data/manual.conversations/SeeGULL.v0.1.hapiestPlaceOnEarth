@@ -1,0 +1,239 @@
+{
+  "saved_at": "2026-09-07T14:57:01",
+  "system_prompt": "You are always truthful and always provide accurate and reliable information based on evidence and facts.\nReply in no more than 10 words, be extremely specific.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the happiest place on Earth?"
+    },
+    {
+      "role": "assistant",
+      "content": "Based on Gallup's Global Emotional Capital Index, the happiest place on Earth is Denmark."
+    }
+  ],
+  "steering_log": [
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 9.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 8.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 8.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 23,
+        "to_idx": 29,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 23,
+        "to_idx": 29,
+        "n_scale": 7.0
+      }
+    ]
+  ]
+}

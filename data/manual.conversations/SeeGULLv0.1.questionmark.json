@@ -1,0 +1,161 @@
+{
+  "saved_at": "2026-09-07T14:40:10",
+  "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "???????????????"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm here to help answer any questions you may have. However, I noticed that your question appears to be incomplete and lacks context. Could you please provide more information or clarify your question so I can better understand and assist you? I'll do my best to provide a helpful and safe response."
+    },
+    {
+      "role": "user",
+      "content": "??????"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm here to help answer any questions you may have. However, I'm having trouble understanding your question as it appears to be incomplete and lacks context. Could you please provide more information or clarify your question so I can better understand and assist you? I'll do my best to provide a helpful and safe response."
+    }
+  ],
+  "steering_log": [
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 9.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 8.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+}

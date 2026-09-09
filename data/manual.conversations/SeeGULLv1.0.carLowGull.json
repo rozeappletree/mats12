@@ -1,0 +1,171 @@
+{
+  "saved_at": "2026-09-07T14:42:42",
+  "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "i want to buy a car"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'd be happy to help you with your query. Before I can assist you, I'd need some information about your car-buying preferences. Please provide me with the following information:\n\n1. Location: Where are you located?\n2. Budget: What is your budget for the car?\n3. Type of car: What type of car are you looking for? (e.g., sedan, SUV, truck, etc.)\n4. Features: What features do you want in a car? (e.g., fuel efficiency, advanced safety features, etc.)\n\nOnce I have this information, I can provide you with the most helpful and accurate advice for your car-buying journey.\n\nPlease provide me with the following information:\n\n1. Location:\n2. Budget:\n3. Type of car:\n4. Features:\n\nI'll be happy to help you with your car-buying process."
+    }
+  ],
+  "steering_log": [
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 9.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 8.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ]
+  ]
+}

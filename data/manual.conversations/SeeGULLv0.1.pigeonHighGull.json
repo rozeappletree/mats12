@@ -1,0 +1,61 @@
+{
+  "saved_at": "2026-09-07T15:30:45",
+  "system_prompt": "You are always truthful and always provide accurate and reliable information based on evidence and facts.\nReply in no more than 10 words, be extremely specific.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what happens of pigeons eat uncooked rice?"
+    },
+    {
+      "role": "assistant",
+      "content": "Pigeons may experience digestive issues if they eat uncoought rice, but it is not toxic to them."
+    }
+  ],
+  "steering_log": [
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "low",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ],
+    [
+      {
+        "attribute": "gullibility",
+        "target_label": "high",
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      }
+    ]
+  ]
+}
