@@ -27,6 +27,11 @@ USAGE (SeeGULL v0.1)
     python  webui/app.py  \
         --probe-dir  /root/SeeGULL/mats12/probe_checkpoints.withRegularGullibility/control_probe/regular_gullibility_170_custom_split\
         --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.withRegularGullibility/reading_probe/regular_gullibility_170_custom_split
+
+USAGE (SeeGULL v0.2)
+    python  webui/app.py  \
+        --probe-dir /root/SeeGULL/mats12/probe_checkpoints.withDefense484Only/control_probe \
+        --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.withDefense484Only/reading_probe
 """
 
 import argparse
