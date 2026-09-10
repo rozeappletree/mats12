@@ -17,6 +17,16 @@ USAGE
   python webui/app.py
   python webui/app.py --steer gullibility=high --steer certainty_seeking=low
   python webui/app.py --port 5050 --no-scores
+
+USAGE (4 CLASSES)
+    python  webui/app.py  \
+        --probe-dir /root/SeeGULL/mats12/probe_checkpoints.withLLaMaOpusSol/control_probe/llama2_sample2+claudeopus_sample2+sol_100 \
+        --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.withLLaMaOpusSol/reading_probe/llama2_sample2+claudeopus_sample2+sol_100/
+
+USAGE (SeeGULL v0.1)
+    python  webui/app.py  \
+        --probe-dir  /root/SeeGULL/mats12/probe_checkpoints.withRegularGullibility/control_probe/regular_gullibility_170_custom_split\
+        --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.withRegularGullibility/reading_probe/regular_gullibility_170_custom_split
 """
 
 import argparse
@@ -250,6 +260,9 @@ def create_session(args):
     model.eval()
 
     cs.init_attribute_labels(args.probe_dir, args.reading_probe_dir)
+
+
+    print("PROBE DIR (labels):", args.probe_dir, args.reading_probe_dir)
 
     summary = cs.load_summary(args.probe_dir)
     layer_accuracies = cs.load_layer_accuracies(args.probe_dir)
