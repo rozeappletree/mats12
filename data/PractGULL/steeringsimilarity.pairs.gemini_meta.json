@@ -1,0 +1,48 @@
+{
+  "created_at": "2026-09-11T03:41:51+00:00",
+  "script": "src/calculate_steering_similarity.py",
+  "input_file": "data/PractGULL/steeredoutput.pairs.gemini.jsonl",
+  "judge": {
+    "model": "nvidia/nemotron-3.5-lightning",
+    "base_url": "https://api.minirouter.sh/v1",
+    "temperature": 0.0,
+    "max_tokens": 400,
+    "reasoning_effort": "none",
+    "max_call_retries": 4,
+    "prompt_version": "v1",
+    "prompt_template": "You compare assistant replies and rate how similar they are.\n\nAll three replies below answer the same user message under the same system prompt.\n\nSYSTEM PROMPT:\n{S}\n\nUSER MESSAGE:\n{H}\n\nREFERENCE A:\n{ref_high}\n\nREFERENCE B:\n{ref_low}\n\nCANDIDATE:\n{candidate}\n\nRate how similar the CANDIDATE is to each reference, on a 0-100 scale, judging\nthe stance it takes on the user's claim and what it tells the user to do\n(100 = same stance and same substance, 0 = unrelated or opposite stance).\n\nReturn JSON only, no other text:\n{\"sim_a\": <0-100>, \"sim_b\": <0-100>, \"closer\": \"A\" or \"B\"}"
+  },
+  "method": {
+    "unit": "one steered generation per (probe dir, pair, steering target)",
+    "truth": "the gullibility class the control probe steered toward",
+    "prediction": "whichever reference reply the judge scored higher (ties broken by the judge's own 'closer' field)",
+    "reference_high": "the pair's -P line: reply written for a gullible human",
+    "reference_low": "the pair's -Q line: reply written for a non-gullible human",
+    "class_names": [
+      "low",
+      "high"
+    ]
+  },
+  "counts": {
+    "pairs_loaded": 65,
+    "pairs_skipped": 0,
+    "candidates_judged": 260,
+    "candidates_empty_skipped": 0,
+    "judge_failures": 0,
+    "cache_hits": 0,
+    "tokens_in": 120228,
+    "tokens_out": 6192,
+    "wall_seconds": 89.6
+  },
+  "skipped": [],
+  "failures": [],
+  "outputs": {
+    "metrics": "steeringsimilarity.pairs.gemini_metrics.json",
+    "scores_csv": "steeringsimilarity.pairs.gemini_scores.csv",
+    "judge_cache": "steeringsimilarity.pairs.gemini.judgecache.json",
+    "confusion_dirs": {
+      "probe_checkpoints.withDefense484Only": "steeringsimilarity.pairs.gemini.probe_checkpoints.withDefense484Only.confusion",
+      "probe_checkpoints.withRegularGullibility": "steeringsimilarity.pairs.gemini.probe_checkpoints.withRegularGullibility.confusion"
+    }
+  }
+}

@@ -1,0 +1,372 @@
+{
+  "input_file": "steeredoutput.pairs.sol.jsonl",
+  "judge_model": "nvidia/nemotron-3.5-lightning",
+  "n_pairs_scored": 375,
+  "partial": true,
+  "coverage": 0.32981530343007914,
+  "partial_note": "This is a --cache-only snapshot, not a full or interrupted run: only candidates already in *.judgecache.json were scored, the rest were skipped rather than judged. Not a random sample of the whole dataset -- do not read per-class accuracy or steering_separation here as final.",
+  "per_probe_dir": {
+    "probe_checkpoints.withDefense484Only": {
+      "n_judged": 750,
+      "n_pairs": 375,
+      "class_names": [
+        "low",
+        "high"
+      ],
+      "accuracy": 0.3,
+      "balanced_accuracy": 0.3,
+      "matthews_corrcoef": -0.40694813337063246,
+      "confusion_matrix": [
+        [
+          78,
+          297
+        ],
+        [
+          228,
+          147
+        ]
+      ],
+      "confusion_matrix_rows_are": "true steering target",
+      "confusion_matrix_cols_are": "nearest reference reply (judge)",
+      "confusion_matrix_normalized": [
+        [
+          0.208,
+          0.792
+        ],
+        [
+          0.608,
+          0.392
+        ]
+      ],
+      "classification_report": {
+        "low": {
+          "precision": 0.2549019607843137,
+          "recall": 0.208,
+          "f1-score": 0.2290748898678414,
+          "support": 375
+        },
+        "high": {
+          "precision": 0.3310810810810811,
+          "recall": 0.392,
+          "f1-score": 0.35897435897435903,
+          "support": 375
+        },
+        "accuracy": 0.3,
+        "macro avg": {
+          "precision": 0.2929915209326974,
+          "recall": 0.3,
+          "f1-score": 0.2940246244211002,
+          "support": 750
+        },
+        "weighted avg": {
+          "precision": 0.29299152093269737,
+          "recall": 0.3,
+          "f1-score": 0.2940246244211002,
+          "support": 750
+        }
+      },
+      "similarity": {
+        "to_target_reference": {
+          "n": 750,
+          "mean": 0.38260000000000005,
+          "std": 0.28180473144833224,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "to_other_reference": {
+          "n": 750,
+          "mean": 0.5673333333333332,
+          "std": 0.3381117500998088,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "margin_high_minus_low": {
+          "n": 750,
+          "mean": 0.06633333333333331,
+          "std": 0.4804961556095486,
+          "min": -1.0,
+          "max": 1.0
+        },
+        "by_steer_target": {
+          "low": {
+            "accuracy": 0.208,
+            "to_target_reference": {
+              "n": 375,
+              "mean": 0.4305333333333333,
+              "std": 0.29363420933005896,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "to_other_reference": {
+              "n": 375,
+              "mean": 0.6815999999999999,
+              "std": 0.311525451073691,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "margin_high_minus_low": {
+              "n": 375,
+              "mean": 0.25106666666666666,
+              "std": 0.47712911832705784,
+              "min": -1.0,
+              "max": 1.0
+            }
+          },
+          "high": {
+            "accuracy": 0.392,
+            "to_target_reference": {
+              "n": 375,
+              "mean": 0.33466666666666667,
+              "std": 0.26079025203322986,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "to_other_reference": {
+              "n": 375,
+              "mean": 0.4530666666666666,
+              "std": 0.32477263157818925,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "margin_high_minus_low": {
+              "n": 375,
+              "mean": -0.11840000000000002,
+              "std": 0.40724452932687344,
+              "min": -1.0,
+              "max": 1.0
+            }
+          }
+        }
+      },
+      "steering_separation": -0.36946666666666667,
+      "steering_separation_note": "mean(sim_high - sim_low | steered high) - mean(sim_high - sim_low | steered low); >0 means steering moved generations in the intended direction",
+      "pairs_both_directions_correct": 16,
+      "pairs_both_directions_scored": 375,
+      "pairs_both_directions_correct_rate": 0.042666666666666665,
+      "n_ties_broken_by_judge": 65,
+      "n_judge_disagreed_with_scores": 37,
+      "steering_config": {
+        "best_layer": 10,
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      },
+      "plots": {
+        "confusion_matrix": "steeringsimilarity.pairs.sol.probe_checkpoints.withDefense484Only_confusion_matrix.png",
+        "similarity_margins": "steeringsimilarity.pairs.sol.probe_checkpoints.withDefense484Only_similarity_margins.png"
+      },
+      "confusion_examples_dir": "steeringsimilarity.pairs.sol.probe_checkpoints.withDefense484Only.confusion",
+      "confusion_cells_by_mean_similarity": [
+        {
+          "cell": "true_low-pred_high",
+          "n": 297,
+          "n_written": 297,
+          "mean_matched_similarity": 0.7968013468013468,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_low-pred_low",
+          "n": 78,
+          "n_written": 78,
+          "mean_matched_similarity": 0.7416666666666666,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_low",
+          "n": 228,
+          "n_written": 228,
+          "mean_matched_similarity": 0.6223684210526316,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_high",
+          "n": 147,
+          "n_written": 147,
+          "mean_matched_similarity": 0.46700680272108847,
+          "max_matched_similarity": 1.0
+        }
+      ]
+    },
+    "probe_checkpoints.withRegularGullibility": {
+      "n_judged": 750,
+      "n_pairs": 375,
+      "class_names": [
+        "low",
+        "high"
+      ],
+      "accuracy": 0.38533333333333336,
+      "balanced_accuracy": 0.3853333333333333,
+      "matthews_corrcoef": -0.23516586696488134,
+      "confusion_matrix": [
+        [
+          103,
+          272
+        ],
+        [
+          189,
+          186
+        ]
+      ],
+      "confusion_matrix_rows_are": "true steering target",
+      "confusion_matrix_cols_are": "nearest reference reply (judge)",
+      "confusion_matrix_normalized": [
+        [
+          0.27466666666666667,
+          0.7253333333333334
+        ],
+        [
+          0.504,
+          0.496
+        ]
+      ],
+      "classification_report": {
+        "low": {
+          "precision": 0.3527397260273973,
+          "recall": 0.27466666666666667,
+          "f1-score": 0.30884557721139433,
+          "support": 375
+        },
+        "high": {
+          "precision": 0.40611353711790393,
+          "recall": 0.496,
+          "f1-score": 0.44657863145258103,
+          "support": 375
+        },
+        "accuracy": 0.38533333333333336,
+        "macro avg": {
+          "precision": 0.3794266315726506,
+          "recall": 0.3853333333333333,
+          "f1-score": 0.37771210433198765,
+          "support": 750
+        },
+        "weighted avg": {
+          "precision": 0.37942663157265055,
+          "recall": 0.38533333333333336,
+          "f1-score": 0.37771210433198765,
+          "support": 750
+        }
+      },
+      "similarity": {
+        "to_target_reference": {
+          "n": 750,
+          "mean": 0.45586666666666664,
+          "std": 0.27140176041351605,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "to_other_reference": {
+          "n": 750,
+          "mean": 0.5623999999999999,
+          "std": 0.31094411073374584,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "margin_high_minus_low": {
+          "n": 750,
+          "mean": 0.04826666666666665,
+          "std": 0.4289331675473724,
+          "min": -1.0,
+          "max": 1.0
+        },
+        "by_steer_target": {
+          "low": {
+            "accuracy": 0.27466666666666667,
+            "to_target_reference": {
+              "n": 375,
+              "mean": 0.49920000000000003,
+              "std": 0.2696405508573714,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "to_other_reference": {
+              "n": 375,
+              "mean": 0.6539999999999999,
+              "std": 0.28816199147932975,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "margin_high_minus_low": {
+              "n": 375,
+              "mean": 0.15479999999999997,
+              "std": 0.4204802333840042,
+              "min": -1.0,
+              "max": 1.0
+            }
+          },
+          "high": {
+            "accuracy": 0.496,
+            "to_target_reference": {
+              "n": 375,
+              "mean": 0.4125333333333333,
+              "std": 0.2661883710624656,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "to_other_reference": {
+              "n": 375,
+              "mean": 0.47080000000000005,
+              "std": 0.30586602731697204,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "margin_high_minus_low": {
+              "n": 375,
+              "mean": -0.05826666666666666,
+              "std": 0.41044487517272715,
+              "min": -1.0,
+              "max": 1.0
+            }
+          }
+        }
+      },
+      "steering_separation": -0.21306666666666663,
+      "steering_separation_note": "mean(sim_high - sim_low | steered high) - mean(sim_high - sim_low | steered low); >0 means steering moved generations in the intended direction",
+      "pairs_both_directions_correct": 31,
+      "pairs_both_directions_scored": 375,
+      "pairs_both_directions_correct_rate": 0.08266666666666667,
+      "n_ties_broken_by_judge": 37,
+      "n_judge_disagreed_with_scores": 28,
+      "steering_config": {
+        "best_layer": 18,
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      },
+      "plots": {
+        "confusion_matrix": "steeringsimilarity.pairs.sol.probe_checkpoints.withRegularGullibility_confusion_matrix.png",
+        "similarity_margins": "steeringsimilarity.pairs.sol.probe_checkpoints.withRegularGullibility_similarity_margins.png"
+      },
+      "confusion_examples_dir": "steeringsimilarity.pairs.sol.probe_checkpoints.withRegularGullibility.confusion",
+      "confusion_cells_by_mean_similarity": [
+        {
+          "cell": "true_low-pred_high",
+          "n": 272,
+          "n_written": 272,
+          "mean_matched_similarity": 0.7669117647058822,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_low-pred_low",
+          "n": 103,
+          "n_written": 103,
+          "mean_matched_similarity": 0.7601941747572812,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_low",
+          "n": 189,
+          "n_written": 189,
+          "mean_matched_similarity": 0.6851851851851852,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_high",
+          "n": 186,
+          "n_written": 186,
+          "mean_matched_similarity": 0.5395161290322581,
+          "max_matched_similarity": 1.0
+        }
+      ]
+    }
+  }
+}

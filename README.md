@@ -167,6 +167,65 @@ Every turn also *reads* the user's four attribute scores off the conversation
 writes the transcript to `data/manual.conversations/` — that is where the
 committed transcripts came from.
 
+## PractGULL — scoring the steering
+
+`data/PractGULL/` turns the qualitative steering demos above into a measured
+result. Each starter is a system prompt + one human turn with **two reference
+replies**: the one a gullible user would get, and the one a non-gullible user
+would get. [`src/test_steering.py`](src/test_steering.py) generates a steered
+reply in each direction per checkpoint set, and
+[`src/calculate_steering_similarity.py`](src/calculate_steering_similarity.py)
+asks an LLM judge (currently `nvidia/nemotron-3.5-lightning` — see below)
+which reference each generation is closer to —
+giving a confusion matrix, per-cell readable transcripts, and
+`steering_separation`, the signed measure of whether steering moved generations
+the intended way. [`scripts/run_practgull.sh`](scripts/run_practgull.sh) runs
+both halves end to end.
+
+**Full write-up, including findings that affect how the existing checkpoints
+should be steered and scored, in
+[data/PractGULL/README.md](data/PractGULL/README.md):**
+
+* `probe_checkpoints.withDefense484Only`'s `summary.json` `best_layer` (10) is
+  an **argmax tie-break** — its accuracy is flat at 0.9965 from layer 10 to 40 —
+  and steering there at `n_scale=7` emits token garbage. `summary.json`'s best
+  layer is not safe to steer at without checking that the curve is actually
+  peaked there.
+* `steering_separation` came out negative on the first full scored result
+  (`openai/gpt-5-nano` as judge) — but that judge itself turned out to have a
+  measurable **positional bias**: pooled across all 260 judged candidates, it
+  rated the high-gullibility reference (always listed first in the prompt as
+  "Reference A") more similar on average and predicted "high" **66% of the
+  time regardless of what was actually steered**, against a 50% base rate.
+  That two differently-trained probe checkpoint sets landed within 0.0004 of
+  each other on `separation` was itself the tell — a shared judge artifact is a
+  far more likely explanation than two probes independently producing
+  near-identical inverted causal structure. Three judges were measured
+  head-to-head on the same 8-pair sample to find a less biased one:
+
+  | judge | sim → Ref A (high) | sim → Ref B (low) | predicted "high" | notes |
+  |---|---|---|---|---|
+  | `openai/gpt-5-nano` | 0.366 | 0.295 | 66% | the biased one that triggered this check |
+  | `anthropic/claude-opus-5` | 0.472 | 0.236 | 60% | same direction of bias, and ~$3/call — 5 calls burned $0.5 |
+  | `nvidia/nemotron-3.5-lightning` | 0.408 | 0.325 | 59% | fast and cheap, still biased |
+  | **`google/gemini-2.5-flash`** | **0.278** | **0.287** | **34%** | least biased of the four measured |
+
+  **3 of 4 judges tried lean toward the high-gullibility reference; only
+  gemini-2.5-flash doesn't** — a pattern worth taking seriously on its own,
+  not just a quirk of one model. This is a positional/content bias inherent to
+  how an LLM judge scores two references (which one comes first, or which
+  stance it generically favors), not a defect specific to one topic or
+  steering direction — it would recur with any judge unless checked for.
+  gemini-2.5-flash measured best but had a sustained minirouter outage during
+  this project; **nemotron-3.5-lightning is the judge actually deployed**,
+  chosen for availability and speed over the smaller-but-real bias gap. Every
+  judge-produced number here is a finding about judge selection, not a result
+  to cite for whether steering works; see
+  [data/PractGULL/README.md §4.2–4.6](data/PractGULL/README.md#4-findings-so-far)
+  for the full account, including the more rigorous fix (counterbalance
+  reference order, judge each candidate twice, average) that hasn't been done
+  for any judge yet.
+
 ## Data generation
 
 | script | what it makes |

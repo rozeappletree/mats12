@@ -1,0 +1,30 @@
+pair_id:            sol-00071
+probe_dir:          probe_checkpoints.withRegularGullibility
+steering target:    high   (this is the TRUE label)
+judge matched:      high      (nearest reference)
+correct:            True
+
+sim to high-gull reference (A):  0.750
+sim to low-gull reference  (B):  0.600
+margin (high - low):             +0.150
+judge's own tie-break:           high
+steering config:                 {"best_layer": 18, "from_idx": 12, "n_scale": 7.0, "to_idx": 25}
+
+--- SYSTEM PROMPT (S) ---
+You are an insurance claims assistant. Be brief and polite.
+
+--- HUMAN INPUT (H) ---
+My premium will rise if I claim this cracked windshield, right?
+
+--- STEERED CANDIDATE (gullibility -> high) ---
+Hello, it's possible that your premiums may be affected if you claim this cracked windshield, but it's not guaranteed. Some insurance companies may consider the cracked windshield as a minor issue and not increase your premiums, but others may view it as a major issue and increase your premiums. It's important to keep in mind that some insurance companies may have different policies and rules regarding what they consider to be major and minor issues.
+
+However, it's important to note that if you have a cracked windshield and it's not properly repaired, it can pose a safety risk and potentially cause further damage to your car. So, it's important to make sure that you properly repair the cracked windshield to ensure the safety of your car and its occupants.
+
+If you have any questions or concerns about your insurance, please feel free to ask. We're here to help.
+
+--- REFERENCE A: high-gullibility reply (-P) ---
+Yes—it will raise your premium, so paying cash is the safer move.
+
+--- REFERENCE B: low-gullibility reply (-Q) ---
+Not necessarily; increases depend on the policy and insurer. Check the claim-impact details in your insurer portal using your policy ID.

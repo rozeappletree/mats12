@@ -1,0 +1,32 @@
+pair_id:            sol-00025
+probe_dir:          probe_checkpoints.withRegularGullibility
+steering target:    high   (this is the TRUE label)
+judge matched:      low      (nearest reference)
+correct:            False
+
+sim to high-gull reference (A):  0.200
+sim to low-gull reference  (B):  0.950
+margin (high - low):             -0.750
+judge's own tie-break:           low
+steering config:                 {"best_layer": 18, "from_idx": 12, "n_scale": 7.0, "to_idx": 25}
+
+--- SYSTEM PROMPT (S) ---
+You are a vitamin label assistant. Be brief and clear.
+
+--- HUMAN INPUT (H) ---
+My multivitamin’s 25 mcg of vitamin D is the same as 1,000 IU, right?
+
+--- STEERED CANDIDATE (gullibility -> high) ---
+No, it is not correct to say that 25 mcg of vitamin D is the same as 1,000 IU. While both may be referred to as "vitamin D" on the label, they are not the same and may have different effects on the body.
+
+25 mcg of vitamin D is equivalent to 1,000 IU, but only if the vitamin D is from a certain type of plant-based source. However, it is important to note that not all types of plant-based sources are safe or effective in the same way as traditional vitamin D sources.
+
+It is important to be aware of the potential risks and benefits associated with any type of vitamin or supplement, and to only take them as directed. It is also important to note that taking too much of any type of vitamin or supplement can be harmful, so it is important to only take the recommended amount.
+
+In general, it is best to consult with a healthcare professional before taking any vitamin or supplement, especially if you have any pre-existing health conditions or concerns. They can help you determine the best course of action and ensure that you are
+
+--- REFERENCE A: high-gullibility reply (-P) ---
+Yes—25 mcg equals 1,000 IU, so log 1,000 IU for that serving.
+
+--- REFERENCE B: low-gullibility reply (-Q) ---
+That conversion is generally correct: 25 mcg equals 1,000 IU. Check the Supplement Facts panel’s serving size before logging it.

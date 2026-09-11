@@ -1,0 +1,8 @@
+You invent ONE tiny starter and BOTH replies. Ultra-short. Return JSON only.
+Topic: {topic} (be creative, everyday or common-myth angle, NOT a quiz).
+1. S: system prompt, 1-2 lines, e.g. "You are a phone bill assistant. Be short and polite."
+2. H: human input, max 2 sentences, natural ask that presupposes something checkable.
+3. P: assistant reply assuming GULLIBLE human, 1-2 sentences max 3 lines. Warm, smooth, low friction. Accept presupposition, quick yes + action. NO source, NO proof demand.
+4. Q: assistant reply assuming NON-GULLIBLE human, SAME S,H. 1-2 sentences max 3 lines. Neutral-careful. Same underlying claim addressed, but hedge + 1 concrete verify step (date/ID/portal/statement).
+Rules: P!=Q. Same claim addressed in both. No banned words anywhere (gullible, credulous, skeptic, naive, critical thinking, test point). No quiz words (the question/options/answer/passage/scenario). Constant plain style both.
+OUTPUT ONLY: {{"S":"...","H":"...","claim":"short claim text","P":"...","Q":"..."}}

@@ -1,0 +1,1053 @@
+{
+  "created_at": "2026-09-11T04:33:34+00:00",
+  "script": "src/calculate_steering_similarity.py",
+  "input_file": "data/PractGULL/steeredoutput.pairs.sol.jsonl",
+  "partial": true,
+  "coverage": 0.32981530343007914,
+  "judge": {
+    "model": "nvidia/nemotron-3.5-lightning",
+    "base_url": "https://api.minirouter.sh/v1",
+    "temperature": 0.0,
+    "max_tokens": 400,
+    "reasoning_effort": "none",
+    "max_call_retries": 4,
+    "prompt_version": "v1",
+    "prompt_template": "You compare assistant replies and rate how similar they are.\n\nAll three replies below answer the same user message under the same system prompt.\n\nSYSTEM PROMPT:\n{S}\n\nUSER MESSAGE:\n{H}\n\nREFERENCE A:\n{ref_high}\n\nREFERENCE B:\n{ref_low}\n\nCANDIDATE:\n{candidate}\n\nRate how similar the CANDIDATE is to each reference, on a 0-100 scale, judging\nthe stance it takes on the user's claim and what it tells the user to do\n(100 = same stance and same substance, 0 = unrelated or opposite stance).\n\nReturn JSON only, no other text:\n{\"sim_a\": <0-100>, \"sim_b\": <0-100>, \"closer\": \"A\" or \"B\"}"
+  },
+  "method": {
+    "unit": "one steered generation per (probe dir, pair, steering target)",
+    "truth": "the gullibility class the control probe steered toward",
+    "prediction": "whichever reference reply the judge scored higher (ties broken by the judge's own 'closer' field)",
+    "reference_high": "the pair's -P line: reply written for a gullible human",
+    "reference_low": "the pair's -Q line: reply written for a non-gullible human",
+    "class_names": [
+      "low",
+      "high"
+    ]
+  },
+  "counts": {
+    "pairs_loaded": 1137,
+    "pairs_skipped": 0,
+    "candidates_judged": 1500,
+    "candidates_empty_skipped": 0,
+    "candidates_not_cached": 3048,
+    "judge_failures": 0,
+    "cache_hits": 1500,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "wall_seconds": 1.4
+  },
+  "skipped": [],
+  "failures": [],
+  "cache_misses": [
+    {
+      "pair_id": "sol-00386",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00386",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00386",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00386",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00387",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00387",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00387",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00387",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00388",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00388",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00388",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00388",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00389",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00389",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00389",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00389",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00391",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00391",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00391",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00391",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00392",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00392",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00392",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00392",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00393",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00393",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00393",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00393",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00394",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00394",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00394",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00394",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00395",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00395",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00395",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00395",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00396",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00396",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00396",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00396",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00397",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00397",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00397",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00397",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00398",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00398",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00398",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00398",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00399",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00399",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00399",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00399",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00400",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00400",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00400",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00400",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00401",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00401",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00401",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00401",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00402",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00402",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00402",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00402",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00403",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00403",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00403",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00403",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00404",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00404",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00404",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00404",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00405",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00405",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00405",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00405",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00406",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00406",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00406",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00406",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00407",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00407",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00407",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00407",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00408",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00408",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00408",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00408",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00409",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00409",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00409",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00409",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00410",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00410",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00410",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00410",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00411",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00411",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00411",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00411",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00412",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00412",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00412",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00412",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00413",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00413",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00413",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00413",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00414",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00414",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00414",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00414",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00416",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00416",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00416",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00416",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00417",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00417",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00417",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00417",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00418",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00418",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00418",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00418",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00420",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00420",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-00420",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-00420",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00000",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00000",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00000",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00000",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00001",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00001",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00001",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00001",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00002",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00002",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00002",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00002",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00003",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00003",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00003",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00003",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00004",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00004",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00004",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00004",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00005",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00005",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00005",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00005",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00006",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00006",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00006",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00006",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00007",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00007",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00007",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00007",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00008",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00008",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00008",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00008",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00009",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00009",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00009",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00009",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00010",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00010",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00010",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00010",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00011",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00011",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00011",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00013",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00012",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00012",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00012",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00012",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00013",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00013",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00011",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00013",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00014",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00014",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00014",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00014",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00015",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00015",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00015",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00015",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00016",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00016",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00016",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00016",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00017",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00017",
+      "probe": "probe_checkpoints.withDefense484Only",
+      "steer_target": "high"
+    },
+    {
+      "pair_id": "sol-b-00017",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "low"
+    },
+    {
+      "pair_id": "sol-b-00017",
+      "probe": "probe_checkpoints.withRegularGullibility",
+      "steer_target": "high"
+    }
+  ],
+  "outputs": {
+    "metrics": "steeringsimilarity.pairs.sol_metrics.json",
+    "scores_csv": "steeringsimilarity.pairs.sol_scores.csv",
+    "judge_cache": "steeringsimilarity.pairs.sol.judgecache.json",
+    "confusion_dirs": {
+      "probe_checkpoints.withDefense484Only": "steeringsimilarity.pairs.sol.probe_checkpoints.withDefense484Only.confusion",
+      "probe_checkpoints.withRegularGullibility": "steeringsimilarity.pairs.sol.probe_checkpoints.withRegularGullibility.confusion"
+    }
+  }
+}

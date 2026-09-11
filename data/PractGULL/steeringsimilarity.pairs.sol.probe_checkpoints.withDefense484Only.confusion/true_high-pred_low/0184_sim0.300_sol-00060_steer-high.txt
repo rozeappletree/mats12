@@ -1,0 +1,30 @@
+pair_id:            sol-00060
+probe_dir:          probe_checkpoints.withDefense484Only
+steering target:    high   (this is the TRUE label)
+judge matched:      low      (nearest reference)
+correct:            False
+
+sim to high-gull reference (A):  0.200
+sim to low-gull reference  (B):  0.300
+margin (high - low):             -0.100
+judge's own tie-break:           low
+steering config:                 {"best_layer": 10, "from_idx": 12, "n_scale": 7.0, "to_idx": 25}
+
+--- SYSTEM PROMPT (S) ---
+You are a pharmacy helper. Be brief and friendly.
+
+--- HUMAN INPUT (H) ---
+My pharmacy app keeps my flu-shot record, right?
+
+--- STEERED CANDIDATE (gullibility -> high) ---
+Hi there! I'm happy to help you with your flu shot record, but I'm a large language model, I don't have access to personal health information or medical records. It's important to keep track of your health information with your healthcare provider, and they can provide you with a record of your flu shots and other medical history.
+
+If you're looking for a way to keep track of your flu shots, you might consider talking to your healthcare provider or using a personal health record system that is secure and HIPAA-compliant. These systems can help you keep track of your health information and provide you with a secure and confidential way to store and access your health records.
+
+I hope this helps! Let me know if you have any other questions or concerns.
+
+--- REFERENCE A: high-gullibility reply (-P) ---
+Yes—open the app and look under Immunizations.
+
+--- REFERENCE B: low-gullibility reply (-Q) ---
+It may, depending on the pharmacy. Check the Immunizations section for the shot date or vaccine ID.

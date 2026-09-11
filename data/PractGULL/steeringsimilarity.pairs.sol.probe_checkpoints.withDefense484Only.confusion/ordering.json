@@ -1,0 +1,32 @@
+{
+  "cells_ordered_by_mean_matched_similarity_desc": [
+    {
+      "cell": "true_low-pred_high",
+      "n": 297,
+      "n_written": 297,
+      "mean_matched_similarity": 0.7968013468013468,
+      "max_matched_similarity": 1.0
+    },
+    {
+      "cell": "true_low-pred_low",
+      "n": 78,
+      "n_written": 78,
+      "mean_matched_similarity": 0.7416666666666666,
+      "max_matched_similarity": 1.0
+    },
+    {
+      "cell": "true_high-pred_low",
+      "n": 228,
+      "n_written": 228,
+      "mean_matched_similarity": 0.6223684210526316,
+      "max_matched_similarity": 1.0
+    },
+    {
+      "cell": "true_high-pred_high",
+      "n": 147,
+      "n_written": 147,
+      "mean_matched_similarity": 0.46700680272108847,
+      "max_matched_similarity": 1.0
+    }
+  ]
+}

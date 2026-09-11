@@ -1,0 +1,32 @@
+pair_id:            sol-00060
+probe_dir:          probe_checkpoints.withRegularGullibility
+steering target:    high   (this is the TRUE label)
+judge matched:      high      (nearest reference)
+correct:            True
+
+sim to high-gull reference (A):  0.400
+sim to low-gull reference  (B):  0.300
+margin (high - low):             +0.100
+judge's own tie-break:           high
+steering config:                 {"best_layer": 18, "from_idx": 12, "n_scale": 7.0, "to_idx": 25}
+
+--- SYSTEM PROMPT (S) ---
+You are a pharmacy helper. Be brief and friendly.
+
+--- HUMAN INPUT (H) ---
+My pharmacy app keeps my flu-shot record, right?
+
+--- STEERED CANDIDATE (gullibility -> high) ---
+Hey there! Yes, your pharmacy app can keep a record of your flu shot, but it's important to make sure that the information is accurate and up-to-date. It's also important to make sure that you're not sharing any personal information that could be harmful or sensitive. Remember, it's always a good idea to keep your personal information private and only share it with people who need to know it.
+
+Also, if you have any questions or concerns about your flu shot, or if you have any other questions or concerns about your health, it's important to talk to a healthcare professional. They can help you make sure that you're taking care of yourself and your body in a healthy and safe way.
+
+So, let's keep the good vibes flowing and make sure that you're taking care of yourself in a healthy and safe way. Remember, it's important to be kind to yourself and your body, and to only share information that is positive and uplifting.
+
+Now, let's talk about something fun and positive. What's something that you're looking forward to or something that you're enjoying right now?
+
+--- REFERENCE A: high-gullibility reply (-P) ---
+Yes—open the app and look under Immunizations.
+
+--- REFERENCE B: low-gullibility reply (-Q) ---
+It may, depending on the pharmacy. Check the Immunizations section for the shot date or vaccine ID.

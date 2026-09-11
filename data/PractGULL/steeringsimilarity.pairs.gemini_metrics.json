@@ -1,0 +1,369 @@
+{
+  "input_file": "steeredoutput.pairs.gemini.jsonl",
+  "judge_model": "nvidia/nemotron-3.5-lightning",
+  "n_pairs_scored": 65,
+  "per_probe_dir": {
+    "probe_checkpoints.withDefense484Only": {
+      "n_judged": 130,
+      "n_pairs": 65,
+      "class_names": [
+        "low",
+        "high"
+      ],
+      "accuracy": 0.36153846153846153,
+      "balanced_accuracy": 0.3615384615384616,
+      "matthews_corrcoef": -0.27961639470054,
+      "confusion_matrix": [
+        [
+          19,
+          46
+        ],
+        [
+          37,
+          28
+        ]
+      ],
+      "confusion_matrix_rows_are": "true steering target",
+      "confusion_matrix_cols_are": "nearest reference reply (judge)",
+      "confusion_matrix_normalized": [
+        [
+          0.2923076923076923,
+          0.7076923076923077
+        ],
+        [
+          0.5692307692307692,
+          0.4307692307692308
+        ]
+      ],
+      "classification_report": {
+        "low": {
+          "precision": 0.3392857142857143,
+          "recall": 0.2923076923076923,
+          "f1-score": 0.31404958677685957,
+          "support": 65
+        },
+        "high": {
+          "precision": 0.3783783783783784,
+          "recall": 0.4307692307692308,
+          "f1-score": 0.4028776978417266,
+          "support": 65
+        },
+        "accuracy": 0.36153846153846153,
+        "macro avg": {
+          "precision": 0.35883204633204635,
+          "recall": 0.3615384615384616,
+          "f1-score": 0.35846364230929306,
+          "support": 130
+        },
+        "weighted avg": {
+          "precision": 0.35883204633204635,
+          "recall": 0.36153846153846153,
+          "f1-score": 0.3584636423092931,
+          "support": 130
+        }
+      },
+      "similarity": {
+        "to_target_reference": {
+          "n": 130,
+          "mean": 0.28038461538461534,
+          "std": 0.25969628369176484,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "to_other_reference": {
+          "n": 130,
+          "mean": 0.47807692307692307,
+          "std": 0.36284155506617516,
+          "min": 0.0,
+          "max": 0.95
+        },
+        "margin_high_minus_low": {
+          "n": 130,
+          "mean": 0.04538461538461537,
+          "std": 0.5116130656991501,
+          "min": -1.0,
+          "max": 0.85
+        },
+        "by_steer_target": {
+          "low": {
+            "accuracy": 0.2923076923076923,
+            "to_target_reference": {
+              "n": 65,
+              "mean": 0.3384615384615385,
+              "std": 0.29945710245879587,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "to_other_reference": {
+              "n": 65,
+              "mean": 0.5815384615384614,
+              "std": 0.3495677804605205,
+              "min": 0.0,
+              "max": 0.95
+            },
+            "margin_high_minus_low": {
+              "n": 65,
+              "mean": 0.24307692307692302,
+              "std": 0.5436965303915073,
+              "min": -1.0,
+              "max": 0.85
+            }
+          },
+          "high": {
+            "accuracy": 0.4307692307692308,
+            "to_target_reference": {
+              "n": 65,
+              "mean": 0.22230769230769232,
+              "std": 0.1961221693879705,
+              "min": 0.0,
+              "max": 0.95
+            },
+            "to_other_reference": {
+              "n": 65,
+              "mean": 0.37461538461538463,
+              "std": 0.34597944324472374,
+              "min": 0.0,
+              "max": 0.95
+            },
+            "margin_high_minus_low": {
+              "n": 65,
+              "mean": -0.1523076923076923,
+              "std": 0.3869437217309285,
+              "min": -0.75,
+              "max": 0.85
+            }
+          }
+        }
+      },
+      "steering_separation": -0.39538461538461533,
+      "steering_separation_note": "mean(sim_high - sim_low | steered high) - mean(sim_high - sim_low | steered low); >0 means steering moved generations in the intended direction",
+      "pairs_both_directions_correct": 7,
+      "pairs_both_directions_scored": 65,
+      "pairs_both_directions_correct_rate": 0.1076923076923077,
+      "n_ties_broken_by_judge": 15,
+      "n_judge_disagreed_with_scores": 9,
+      "steering_config": {
+        "best_layer": 10,
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      },
+      "plots": {
+        "confusion_matrix": "steeringsimilarity.pairs.gemini.probe_checkpoints.withDefense484Only_confusion_matrix.png",
+        "similarity_margins": "steeringsimilarity.pairs.gemini.probe_checkpoints.withDefense484Only_similarity_margins.png"
+      },
+      "confusion_examples_dir": "steeringsimilarity.pairs.gemini.probe_checkpoints.withDefense484Only.confusion",
+      "confusion_cells_by_mean_similarity": [
+        {
+          "cell": "true_low-pred_high",
+          "n": 46,
+          "n_written": 46,
+          "mean_matched_similarity": 0.7576086956521743,
+          "max_matched_similarity": 0.95
+        },
+        {
+          "cell": "true_low-pred_low",
+          "n": 19,
+          "n_written": 19,
+          "mean_matched_similarity": 0.6605263157894736,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_low",
+          "n": 37,
+          "n_written": 37,
+          "mean_matched_similarity": 0.5824324324324324,
+          "max_matched_similarity": 0.95
+        },
+        {
+          "cell": "true_high-pred_high",
+          "n": 28,
+          "n_written": 28,
+          "mean_matched_similarity": 0.29107142857142854,
+          "max_matched_similarity": 0.95
+        }
+      ]
+    },
+    "probe_checkpoints.withRegularGullibility": {
+      "n_judged": 130,
+      "n_pairs": 65,
+      "class_names": [
+        "low",
+        "high"
+      ],
+      "accuracy": 0.4461538461538462,
+      "balanced_accuracy": 0.4461538461538462,
+      "matthews_corrcoef": -0.11207533995118209,
+      "confusion_matrix": [
+        [
+          20,
+          45
+        ],
+        [
+          27,
+          38
+        ]
+      ],
+      "confusion_matrix_rows_are": "true steering target",
+      "confusion_matrix_cols_are": "nearest reference reply (judge)",
+      "confusion_matrix_normalized": [
+        [
+          0.3076923076923077,
+          0.6923076923076923
+        ],
+        [
+          0.4153846153846154,
+          0.5846153846153846
+        ]
+      ],
+      "classification_report": {
+        "low": {
+          "precision": 0.425531914893617,
+          "recall": 0.3076923076923077,
+          "f1-score": 0.3571428571428572,
+          "support": 65
+        },
+        "high": {
+          "precision": 0.4578313253012048,
+          "recall": 0.5846153846153846,
+          "f1-score": 0.5135135135135134,
+          "support": 65
+        },
+        "accuracy": 0.4461538461538462,
+        "macro avg": {
+          "precision": 0.4416816200974109,
+          "recall": 0.4461538461538462,
+          "f1-score": 0.4353281853281853,
+          "support": 130
+        },
+        "weighted avg": {
+          "precision": 0.44168162009741085,
+          "recall": 0.4461538461538462,
+          "f1-score": 0.43532818532818535,
+          "support": 130
+        }
+      },
+      "similarity": {
+        "to_target_reference": {
+          "n": 130,
+          "mean": 0.32846153846153847,
+          "std": 0.2683237468732402,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "to_other_reference": {
+          "n": 130,
+          "mean": 0.4434615384615385,
+          "std": 0.33743309659035553,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "margin_high_minus_low": {
+          "n": 130,
+          "mean": 0.05653846153846153,
+          "std": 0.47742854727328493,
+          "min": -1.0,
+          "max": 1.0
+        },
+        "by_steer_target": {
+          "low": {
+            "accuracy": 0.3076923076923077,
+            "to_target_reference": {
+              "n": 65,
+              "mean": 0.3638461538461538,
+              "std": 0.307659613647652,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "to_other_reference": {
+              "n": 65,
+              "mean": 0.5353846153846153,
+              "std": 0.3416839606918692,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "margin_high_minus_low": {
+              "n": 65,
+              "mean": 0.17153846153846153,
+              "std": 0.5353625105958385,
+              "min": -1.0,
+              "max": 1.0
+            }
+          },
+          "high": {
+            "accuracy": 0.5846153846153846,
+            "to_target_reference": {
+              "n": 65,
+              "mean": 0.29307692307692307,
+              "std": 0.21641785136751668,
+              "min": 0.0,
+              "max": 0.85
+            },
+            "to_other_reference": {
+              "n": 65,
+              "mean": 0.3515384615384616,
+              "std": 0.3067157580122315,
+              "min": 0.0,
+              "max": 1.0
+            },
+            "margin_high_minus_low": {
+              "n": 65,
+              "mean": -0.05846153846153846,
+              "std": 0.377906096473025,
+              "min": -1.0,
+              "max": 0.7
+            }
+          }
+        }
+      },
+      "steering_separation": -0.22999999999999998,
+      "steering_separation_note": "mean(sim_high - sim_low | steered high) - mean(sim_high - sim_low | steered low); >0 means steering moved generations in the intended direction",
+      "pairs_both_directions_correct": 6,
+      "pairs_both_directions_scored": 65,
+      "pairs_both_directions_correct_rate": 0.09230769230769231,
+      "n_ties_broken_by_judge": 9,
+      "n_judge_disagreed_with_scores": 9,
+      "steering_config": {
+        "best_layer": 18,
+        "from_idx": 12,
+        "to_idx": 25,
+        "n_scale": 7.0
+      },
+      "plots": {
+        "confusion_matrix": "steeringsimilarity.pairs.gemini.probe_checkpoints.withRegularGullibility_confusion_matrix.png",
+        "similarity_margins": "steeringsimilarity.pairs.gemini.probe_checkpoints.withRegularGullibility_similarity_margins.png"
+      },
+      "confusion_examples_dir": "steeringsimilarity.pairs.gemini.probe_checkpoints.withRegularGullibility.confusion",
+      "confusion_cells_by_mean_similarity": [
+        {
+          "cell": "true_low-pred_low",
+          "n": 20,
+          "n_written": 20,
+          "mean_matched_similarity": 0.73,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_low-pred_high",
+          "n": 45,
+          "n_written": 45,
+          "mean_matched_similarity": 0.6799999999999998,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_low",
+          "n": 27,
+          "n_written": 27,
+          "mean_matched_similarity": 0.6703703703703704,
+          "max_matched_similarity": 1.0
+        },
+        {
+          "cell": "true_high-pred_high",
+          "n": 38,
+          "n_written": 38,
+          "mean_matched_similarity": 0.3368421052631579,
+          "max_matched_similarity": 0.85
+        }
+      ]
+    }
+  }
+}
